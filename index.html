@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이준화_PORTFOLIO</title>
+
+  <!-- jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- aos -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner glass" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="1700">
+      <div class="wrapper">
+        <div class="liquidGlass-wrapper dock">
+          <div class="liquidGlass-effect"></div>
+          <div class="liquidGlass-tint"></div>
+          <div class="liquidGlass-shine"></div>
+          <div class="liquidGlass-text">
+            <div class="year">2026</div>
+            <div class="category">Design Portfolio</div>
+          </div>
+        </div>
+      </div>
+
+      <svg style="display: none">
+        <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+          <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
+          <!-- Seeds: 14, 17,  -->
+
+          <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+
+          <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+
+          <feDisplacementMap in="SourceGraphic" in2="softMap" scale="100" />
+        </filter>
+      </svg>
+    </div>
+  </header>
+
+  <!-- page1 -->
+  <section class="page1">
+    <div class="page1_visual">
+      <img src="./image/page1.png" alt="page1 배경 이미지" class="bg" data-aos="fade-in" data-aos-duration="2000" />
+      <div class="title-img">
+        <div data-aos="fade-down" data-aos-duration="2000" data-aos-delay="500">
+          <img src="./image/port.png" alt="포트폴리오 타이틀 1" />
+        </div>
+        <div data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1000">
+          <img src="./image/folio.png" alt="포트폴리오 타이틀 2" />
+        </div>
+      </div>
+    </div>
+
+    <div class="page1_text">
+      <p class="name" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1400" data-aos-offset="0">
+        JUNHWA LEE
+      </p>
+    </div>
+  </section>
+
+  <!-- page2 -->
+  <section class="page2">
+    <img src="./image/page2.png" alt="구름 배경 이미지" class="bg-2" />
+    <img src="./image/page2_img.png" alt="구름 이미지" class="bg-2 bg-2-1" />
+
+    <div class="text-group">
+      <div class="text-kr" data-aos="fade-up" data-aos-duration="2000">
+        <p>
+          <span class="bold">형태</span>는 자유롭지만,
+          <span class="bold">흐름</span>은 끊기지 않게.
+        </p>
+        <p>사용자의 경험이 자연스럽게 이어지도록 설계합니다.</p>
+      </div>
+      <div class="text-en" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
+        <p>Fluid in form, seamless in flow.</p>
+        <p>
+          Crafting experiences that drift naturally into the user's journey.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- page3 -->
+  <section class="page3">
+    <div class="page3_left">
+      <div class="About" data-aos="fade-up" data-aos-duration="2000">
+        <p>About.</p>
+      </div>
+
+      <div class="left-text-box">
+        <img src="./image/about_img.png" alt="about_이미지" class="about_img" />
+        <div class="text_group3">
+          <div class="name3">
+            <p>이준화 | JunHwa LEE</p>
+          </div>
+
+          <div class="contact">
+            <p>2000.01.28</p>
+            <p>010-5606-5659</p>
+            <p>eeeljun@gmail.com</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="page3_right">
+      <img src="./image/about_text_r.png" alt="about_우측 글" class="about_text_r" />
+    </div>
+  </section>
+
+  <!-- page4 -->
+  <section class="page4">
+    <div class="Project" data-aos="fade-up" data-aos-duration="2000">
+      <p>Project.</p>
+    </div>
+
+    <div class="box_group">
+
+      <div class="box1">
+        <a href="sub1.html" class="img-box Loopyit_img">
+          <img src="image_sub/Loopyit-img.png" alt="루피잇썸네일">
+        </a>
+
+        <a href="sub1.html">
+
+          <!-- 루피잇 -->
+          <div class="box1_left">
+            <p>Loopyit</p>
+          </div>
+
+          <div class="box1_center">
+            <p>#Team Progject</p>
+            <p>#Brand</p>
+            <p>#HTML/CSS/JS</p>
+          </div>
+
+          <div class="box1_right">
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- 대한산악보전회 -->
+      <div class="box2">
+        <a href="sub2.html" class="img-box KMCS_img">
+          <img src="image_sub/KMCS-img.png" alt="KMCS썸네일">
+        </a>
+        <a href="sub2.html">
+
+          <div class="box2_left">
+            <p>KMCS</p>
+          </div>
+
+          <div class="box2_center">
+            <p>#Website</p>
+            <p>#Brand</p>
+            <p>#Subpage</p>
+          </div>
+
+          <div class="box2_right">
+            <p>2026</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- 폴로 -->
+      <div class="box3">
+        <a href="sub3.html" class="img-box Pole_img">
+          <img src="image_sub/Pole-img.png" alt="Pole썸네일">
+        </a>
+        <a href="sub3.html">
+
+          <div class="box3_left">
+            <p>폴로</p>
+          </div>
+
+          <div class="box3_center">
+            <p>#Website</p>
+            <p>#Redesign</p>
+            <p>#반응형</p>
+          </div>
+
+          <div class="box3_right">
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- 오리온 -->
+      <div class="box4">
+        <a href="sub4.html" class="img-box Orion_img">
+          <img src="image_sub/Orion-img.png" alt="Orion썸네일">
+        </a>
+
+        <a href="sub4.html">
+
+          <div class="box4_left">
+            <p>오리온</p>
+          </div>
+
+          <div class="box4_center">
+            <p>#Website</p>
+            <p>#Redesign</p>
+            <p>#반응형</p>
+          </div>
+
+          <div class="box4_right">
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- page5/footer -->
+  <footer class="page5">
+    <div class="page5-img-wrapper">
+      <img src="image/page5.png" alt="page5.pngs">
+    </div>
+
+    <div class="contact">
+      <p>Contact.</p>
+    </div>
+
+    <div class="text-group5">
+      <div class="text-kr5" data-aos="fade-up" data-aos-duration="2000">
+        <p>콘텐츠와 구조를 통해 사용자 경험을 설계하는 디자이너, 이준화입니다.</p>
+      </div>
+      <div class="text-en5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
+        <p>Designing user experiences through content and structure — JunHwa Lee.</p>
+      </div>
+    </div>
+    <div class="icon-group">
+      <a href="https://github.com/eeljun00" target="_blank" class="icon-g">
+        <img src="./image/icon_github.png" alt="아이콘 깃허브 이미지" />
+      </a>
+      <a href="https://www.notion.so/1f24daa3b0fb80769170cc9d5913c0cb" target="_blank" class="icon-n">
+        <img src="./image/icon_notion.png" alt="아이콘 노션 이미지" />
+      </a>
+      <a href="https://eeeljun.tistory.com/" target="_blank" class="icon-t">
+        <img src="./image/icon_tistory.png" alt="아이콘 티스토리 이미지" />
+      </a>
+    </div>
+    </div>
+  </footer>
+</body>
+
+</html>

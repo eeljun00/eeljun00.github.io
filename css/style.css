@@ -1,0 +1,784 @@
+/* 프리텐다드 폰트 */
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+.abril-fatface-regular {
+  font-family: "Abril Fatface", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+header {
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  top: 15px;
+  left: 0;
+  z-index: 1000;
+
+  transition: transform 1s;
+}
+
+/* LIQUID GLASS STYLES */
+.liquidGlass-wrapper {
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  overflow: hidden;
+
+  box-shadow:
+    0 6px 6px rgba(104, 104, 104, 0.2),
+    0 0 20px rgba(104, 104, 104, 0.1);
+
+  transition: all 0.4s;
+
+  height: 70px;
+  display: flex;
+  align-items: center;
+  margin: 0 30px;
+  padding: 0 30px;
+  box-sizing: border-box;
+  border-radius: 40px;
+}
+
+.liquidGlass-effect {
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+  inset: 0;
+
+  backdrop-filter: blur(3px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+}
+
+.liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+
+  box-shadow:
+    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.liquidGlass-text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+/* 숨김 상태 */
+header.hide {
+  transform: translateY(-130%);
+}
+
+/* 좌측 상단 */
+.year {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+/* 우측 상단 */
+.category {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+/* =====================
+   PAGE1
+===================== */
+.page1 {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 배경 + 타이틀 */
+.page1_visual {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.page1_visual .bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 중앙 PORTFOLIO 이미지 */
+.title-img {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  display: flex;
+}
+
+/* 텍스트 영역 */
+.page1_text {
+  font-family: "Abril Fatface", serif;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* 우측 하단 */
+.name {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  font-size: 24px;
+  color: #6fa3ff;
+  font-weight: 600;
+}
+
+/* =====================
+   PAGE2
+===================== */
+.page2 {
+  position: relative;
+  height: 950px;
+}
+
+/* 배경 */
+.page2 .bg-2 {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+
+}
+.page2 .bg-2-1{
+  top: 52%;
+  left: 50%;
+    /* 애니메이션 추가: 이름, 시간, 무한반복, 부드럽게 왕복 */
+  animation: floatingCloud 2s ease-in-out infinite;
+}
+/* 구름 움직임 정의 */
+@keyframes floatingCloud {
+  0% {
+    /* 기존 중앙 정렬 유지 + 위아래로 살짝 이동 */
+    transform: translate(-50%, -50%) translateY(0);
+  }
+
+  50% {
+    /* 중앙에서 위로 20px만큼 부드럽게 이동 */
+    transform: translate(-50%, -50%) translateY(-18px);
+  }
+
+  100% {
+    /* 다시 원위치 */
+    transform: translate(-50%, -50%) translateY(0);
+  }
+}
+
+/* 텍스트 그룹 */
+.text-group {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* 한글 텍스트 */
+.text-kr {
+  margin-bottom: 13px;
+}
+
+.text-kr p {
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  color: #767676;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+/* 영어 텍스트 */
+.text-en {
+  margin-top: 12px;
+}
+
+.text-en p {
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #999999;
+  line-height: 1.5;
+}
+
+/* =====================
+   PAGE3
+===================== */
+.page3 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 1080px;
+  padding: 130px 160px 100px 160px;
+}
+
+.page3 .page3_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 271px;
+  height: 781px;
+
+}
+
+.page3 .About {
+  margin-top: 15px;
+}
+
+.page3 .left-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+}
+
+.page3 .About p {
+  font-size: 64px;
+  font-family: "Abril Fatface", serif;
+  color: #6fa3ff;
+}
+
+.page3 .text_group3 {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.page3 .name3 {
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  color: #6fa3ff;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.page3 .name3 p {
+  text-align: center;
+}
+
+.page3 .contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #666666;
+}
+
+.page3 .contact p {
+  text-align: center;
+}
+
+.page3 .page3_r {
+  width: 100%;
+  height: 100vh;
+}
+
+/* =====================
+   PAGE4
+===================== */
+.page4 {
+  width: 100%;
+  padding: 150px 160px 150px 160px;
+  position: relative;
+}
+
+.page4 .Project p {
+  font-size: 64px;
+  font-family: "Abril Fatface", serif;
+  color: #6fa3ff;
+  padding: 50px 0px 100px 0px;
+}
+
+.box_group {
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 32px;
+}
+
+/* 호버 이미지:공통클래스 */
+.page4 .img-box {
+  width: 480px;
+  height: 295px;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transition: all .3s;
+  z-index: 10;
+  pointer-events: none;
+  transition: all .5s ease-out;
+  transform: translateY(20px);
+}
+
+/* 애니메이션 정의 */
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.page4 .img-box img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 호버 이미지:루피잇 개별클래스 */
+.page4 .Loopyit_img {
+  top: 90%;
+  left: 62%;
+}
+
+.page4 .box1:hover .Loopyit_img {
+  opacity: 1;
+  visibility: visible;
+  animation: floating 1.7s ease-in-out infinite;
+}
+
+/* 호버 이미지:KMCS 개별클래스 */
+.page4 .KMCS_img {
+  top: -130%;
+  left: 62%;
+}
+
+.page4 .box2:hover .KMCS_img {
+  opacity: 1;
+  visibility: visible;
+  animation: floating 1.7s ease-in-out infinite;
+}
+
+/* 호버 이미지:폴로 개별클래스 */
+.page4 .Pole_img {
+  top: -200%;
+  left: 62%;
+}
+
+.page4 .box3:hover .Pole_img {
+  opacity: 1;
+  visibility: visible;
+  animation: floating 1.7s ease-in-out infinite;
+}
+
+/* 호버 이미지:오리온 개별클래스 */
+.page4 .Orion_img {
+  top: -260%;
+  left: 62%;
+}
+
+.page4 .box4:hover .Orion_img {
+  opacity: 1;
+  visibility: visible;
+  animation: floating 1.7s ease-in-out infinite;
+}
+
+/* 루피잇 */
+.box_group .box1 {
+  position: relative;
+  /* 가상 요소의 기준점 */
+  color: #333333;
+  padding: 18px 0;
+  cursor: pointer;
+  /* 마우스 커서 변경 */
+}
+
+/* 1. 밑바탕이 되는 검정색 선 (기존 border-top 대신 사용) */
+.box_group .box1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+}
+
+/* 2. 호버 시 왼쪽에서 차오를 포인트 컬러 선 */
+.box_group .box1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #00FF50;
+  /* 0.4s에서 1s(1초)로 변경. 숫자가 커질수록 천천히 채워집니다. */
+  transition: width 1s ease-in-out;
+}
+
+/* 3. 호버 상태 정의 */
+.box_group .box1:hover {
+  color: #00FF50;
+  /* 텍스트 색상 변경 */
+}
+
+.box_group .box1:hover::after {
+  width: 100%;
+  /* 호버 시 너비를 100%로 채움 */
+}
+
+/* 호버 이미지:개별클래스 */
+.box_group .box1 a {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box_group .box1_left {
+  width: 107px;
+}
+
+.box_group .box1_center {
+  display: flex;
+  width: 588px;
+  /*justify-content: space-between;*/
+  gap: 18px;
+}
+
+/* 대한산악보전회 */
+/* 1. 기본 스타일 설정 */
+.box_group .box2 {
+  position: relative;
+  /* 가상 요소(선)의 기준점 */
+  color: #333333;
+  padding: 18px 0;
+  cursor: pointer;
+  /* 마우스 호버 시 클릭 가능한 느낌 부여 */
+  transition: color 0.5s;
+  /* 글자 색상 변경도 선 속도와 맞춤 */
+}
+
+/* 2. 바탕이 되는 기본 검정 선 (항상 보임) */
+.box_group .box2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  /* 기본 선 색상 */
+  z-index: 1;
+  /* 아래에 깔리도록 설정 */
+}
+
+/* 3. 호버 시 채워지는 포인트 컬러 선 */
+.box_group .box2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  /* 처음엔 보이지 않음 */
+  height: 2px;
+  background-color: #588157;
+  /* 포인트 컬러 (루피잇 그린) */
+  z-index: 2;
+  /* 기본 선보다 위에 위치 */
+
+  /* 속도 조절: 1.2s로 설정하여 천천히 부드럽게 채워짐 */
+  transition: width 1.2s ease-in-out;
+}
+
+/* 4. 호버 상태 (글자색과 선의 변화) */
+.box_group .box2:hover {
+  color: #588157;
+  /* 텍스트 색상 변경 */
+}
+
+.box_group .box2:hover::after {
+  width: 100%;
+  /* 마우스를 올리면 너비가 100%로 확장 */
+}
+
+.box_group .box2 a {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box_group .box2_left {
+  width: 107px;
+}
+
+.box_group .box2_center {
+  display: flex;
+  width: 588px;
+  /*justify-content: space-between;*/
+  gap: 18px;
+}
+
+/* 폴로 */
+/* 1. 기본 스타일 설정 */
+.box_group .box3 {
+  position: relative;
+  /* 가상 요소(선)의 기준점 */
+  color: #333333;
+  padding: 18px 0;
+  cursor: pointer;
+  /* 마우스 호버 시 클릭 가능한 느낌 부여 */
+  transition: color 0.5s;
+  /* 글자 색상 변경도 선 속도와 맞춤 */
+}
+
+/* 2. 바탕이 되는 기본 검정 선 (항상 보임) */
+.box_group .box3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  /* 기본 선 색상 */
+  z-index: 1;
+  /* 아래에 깔리도록 설정 */
+}
+
+/* 3. 호버 시 채워지는 포인트 컬러 선 */
+.box_group .box3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  /* 처음엔 보이지 않음 */
+  height: 2px;
+  background-color: #FFC107;
+  /* 포인트 컬러 (루피잇 그린) */
+  z-index: 2;
+  /* 기본 선보다 위에 위치 */
+
+  /* 속도 조절: 1.2s로 설정하여 천천히 부드럽게 채워짐 */
+  transition: width 1.2s ease-in-out;
+}
+
+/* 4. 호버 상태 (글자색과 선의 변화) */
+.box_group .box3:hover {
+  color: #FFC107;
+  /* 텍스트 색상 변경 */
+}
+
+.box_group .box3:hover::after {
+  width: 100%;
+  /* 마우스를 올리면 너비가 100%로 확장 */
+}
+
+.box_group .box3 a {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box_group .box3_left {
+  width: 107px;
+}
+
+.box_group .box3_center {
+  display: flex;
+  width: 588px;
+  /*justify-content: space-between;*/
+  gap: 18px;
+}
+
+/* 오리온 */
+/* 1. 기본 스타일 설정 */
+.box_group .box4 {
+  position: relative;
+  /* 가상 요소(선)의 기준점 */
+  color: #333333;
+  padding: 18px 0;
+  cursor: pointer;
+  /* 마우스 호버 시 클릭 가능한 느낌 부여 */
+  transition: color 0.5s;
+  /* 글자 색상 변경도 선 속도와 맞춤 */
+}
+
+/* 2. 바탕이 되는 기본 검정 선 (항상 보임) */
+.box_group .box4::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  /* 기본 선 색상 */
+  z-index: 1;
+  /* 아래에 깔리도록 설정 */
+}
+
+/* 3. 호버 시 채워지는 포인트 컬러 선 */
+.box_group .box4::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  /* 처음엔 보이지 않음 */
+  height: 2px;
+  background-color: #E3051B;
+  /* 포인트 컬러 (루피잇 그린) */
+  z-index: 2;
+  /* 기본 선보다 위에 위치 */
+
+  /* 속도 조절: 1.2s로 설정하여 천천히 부드럽게 채워짐 */
+  transition: width 1.2s ease-in-out;
+}
+
+/* 4. 호버 상태 (글자색과 선의 변화) */
+.box_group .box4:hover {
+  color: #E3051B;
+  /* 텍스트 색상 변경 */
+}
+
+.box_group .box4:hover::after {
+  width: 100%;
+  /* 마우스를 올리면 너비가 100%로 확장 */
+}
+
+.box_group .box4 a {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box_group .box4_left {
+  width: 107px;
+}
+
+.box_group .box4_center {
+  display: flex;
+  width: 588px;
+  /*justify-content: space-between;*/
+  gap: 18px;
+}
+
+/* =====================
+   PAGE5/footer
+===================== */
+.page5 {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.page5 .contact p {
+  font-size: 64px;
+  font-family: "Abril Fatface", serif;
+  color: #767676;
+  padding: 150px 0px 30px 0px;
+}
+
+.page5>.page5-img-wrapper {
+  width: auto;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.page5>.page5-img-wrapper img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 배경 + 타이틀 */
+.page5>.text-group5 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #767676;
+  gap: 18px;
+  margin-bottom: 50px;
+}
+
+.page5>.text-group5 div p {
+  font-size: 24px;
+}
+
+.page5>.icon-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 260px;
+}
+
+.page5>.icon-group a img {
+  transition: all 0.3s linear
+}
+
+.page5>.icon-group a:hover>img {
+  transform: rotate(30deg);
+}

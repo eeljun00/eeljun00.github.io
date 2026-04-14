@@ -1,0 +1,200 @@
+/* 프리텐다드 폰트 */
+@font-face {
+    font-family: "Pretendard";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Pretendard";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-display: swap;
+}
+
+.abril-fatface-regular {
+    font-family: "Abril Fatface", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font-family: "Pretendard", sans-serif;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+.sub4_bg {
+    width: 100%;
+    height: 100vh;
+    background-image: url(image_sub/sub4-img-Orion.png);
+    display: flex;
+}
+
+/* 왼쪽 */
+
+.sub4_left {
+    width: 50%;
+    height: 100vh;
+    position: relative;
+}
+
+.sub4_left p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: #fff;
+    font-family: "Abril Fatface", serif;
+    font-size: 96px;
+    transition: all 0.3s;
+}
+
+.sub4_left:hover p {
+    color: #E3051B;
+}
+
+.sub4_left a {
+    overflow: hidden;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding: 20px 24px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+.sub4_left a:hover {
+    color: #000;
+}
+
+.sub4_left a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: -1;
+    transition: all 0.3s;
+    will-change: transform;
+}
+
+.sub4_left a:hover::before {
+    transform: scaleX(1);
+}
+
+.sub4_left::before {
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3s;
+    z-index: 0;
+}
+
+.sub4_left:hover::before {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 오른쪽 */
+
+.sub4_right {
+    width: 50%;
+    height: 100vh;
+    position: relative;
+}
+
+.sub4_right p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: #fff;
+    font-family: "Abril Fatface", serif;
+    font-size: 96px;
+    transition: all 0.3s;
+}
+
+.sub4_right:hover p {
+    color: #E3051B;
+}
+
+.sub4_right a {
+    overflow: hidden;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding: 20px 24px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+.sub4_right a:hover {
+    color: #000;
+}
+
+.sub4_right a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: -1;
+    transition: all 0.3s;
+    will-change: transform;
+}
+
+.sub4_right a:hover::before {
+    transform: scaleX(1);
+}
+
+.sub4_right::before {
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3s;
+    z-index: 0;
+}
+
+.sub4_right:hover::before {
+    background-color: rgba(0, 0, 0, 0.8);
+}
