@@ -39,7 +39,7 @@ body {
 .sub1_bg {
     width: 100%;
     height: 100vh;
-    background-image: url(image_sub/sub1-img-Loopyit.png);
+    background-image: url(image_sub/sub1_img_Loopyit.png);
     display: flex;
 }
 
