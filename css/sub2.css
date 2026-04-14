@@ -39,7 +39,7 @@ body {
 .sub2_bg {
     width: 100%;
     height: 100vh;
-    background-image: url(image_sub/sub2-img-KMCS.png);
+    background-image: url(../image_sub/sub2-img-KMCS.png);
     display: flex;
 }
 

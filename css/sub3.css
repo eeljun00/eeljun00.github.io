@@ -39,7 +39,7 @@ body {
 .sub3_bg {
     width: 100%;
     height: 100vh;
-    background-image: url(image_sub/sub3-img-Pole.png);
+    background-image: url(../image_sub/sub3-img-Pole.png);
     display: flex;
 }
 
