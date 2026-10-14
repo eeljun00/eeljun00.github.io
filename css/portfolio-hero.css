@@ -201,13 +201,11 @@ body.cursor-flight-active .design-symbol,body.cursor-flight-active .design-symbo
 .footer-credit .maker-prefix { font-size:calc(16px * 18 / 22); }
 body.maker-credit-landed .footer-credit-text { color:#F7F4EA; }
 .page5 .icon-group { position:absolute; top:62%; left:0; width:100%; display:flex; justify-content:center; gap:18px; }
-.page5 .icon-group a { display:grid; place-items:center; border-radius:50%; padding:8px; position:relative; box-shadow:none; transition:background .3s; }
-.page5 .icon-group a::after { content:""; position:absolute; inset:2px; border:1px dashed rgb(247 244 234 / 75%); border-radius:50%; opacity:0; transform:scale(.88) rotate(-20deg); transition:opacity .4s,transform .55s cubic-bezier(.22,1,.36,1); pointer-events:none; }
-.page5 .icon-group img { display:block; width:clamp(60px,4.2vw,80px); height:auto; transform:scale(var(--contact-scale,1)) rotate(var(--contact-turn,0deg)); opacity:.5; filter:grayscale(.35) saturate(.7); transition:transform .55s cubic-bezier(.22,1,.36,1),opacity .4s,filter .4s; box-shadow:none; }
-.page5 .icon-group a:hover,.page5 .icon-group a:focus-visible { --contact-scale:1.06; --contact-turn:-8deg; background:rgb(167 186 99 / 30%); }
-.page5 .icon-group a:nth-child(2):hover,.page5 .icon-group a:nth-child(2):focus-visible { --contact-turn:8deg; }
-.page5 .icon-group a:hover::after,.page5 .icon-group a:focus-visible::after { opacity:1; transform:scale(1.04) rotate(20deg); }
-.page5 .icon-group a:hover img,.page5 .icon-group a:focus-visible img { opacity:1; filter:grayscale(0) saturate(1.2) brightness(1.3); }
+.page5 .icon-group a { display:grid; place-items:center; border-radius:50%; padding:8px; position:relative; box-shadow:none; background:transparent; }
+.page5 .icon-group img { display:block; width:clamp(68px,4.5vw,86px); height:auto; transform-origin:50% 75%; transform:perspective(400px) translateY(var(--contact-lift,0px)) rotateZ(var(--contact-turn,0deg)) rotateX(var(--contact-pitch,0deg)); opacity:.82; filter:brightness(.94) saturate(.9); transition:transform .12s steps(2,end),opacity .18s ease,filter .18s ease; box-shadow:none; }
+.page5 .icon-group a:hover,.page5 .icon-group a:focus-visible { --contact-lift:-4px; --contact-turn:-6deg; --contact-pitch:6deg; }
+.page5 .icon-group a:nth-child(2):hover,.page5 .icon-group a:nth-child(2):focus-visible { --contact-turn:6deg; }
+.page5 .icon-group a:hover img,.page5 .icon-group a:focus-visible img { opacity:1; filter:brightness(1.02) saturate(1); }
 .page5 .icon-group a:focus-visible { outline:2px solid var(--point); outline-offset:4px; }
 .footer-caption { position:absolute; bottom:8%; left:0; width:100%; font-size:clamp(10px,.73vw,14px); color:var(--paper); }
 @media (max-width:1399px) {
@@ -307,5 +305,4 @@ body:not(.horizontal-enabled) .story-panel { height:auto; overflow:visible; }
   .hero-symbol .symbol-icon { animation:none; opacity:1; transform:none; }
   .page1 .name { opacity:1; }
   .page5 .icon-group img { transform:none; transition:none; }
-  .page5 .icon-group a::after { transform:none; transition:none; }
 }
