@@ -208,6 +208,16 @@ body.maker-credit-landed .footer-credit-text { color:#F7F4EA; }
 .page5 .icon-group a:hover img,.page5 .icon-group a:focus-visible img { opacity:1; filter:brightness(1.02) saturate(1); }
 .page5 .icon-group a:focus-visible { outline:2px solid var(--point); outline-offset:4px; }
 .footer-caption { position:absolute; bottom:8%; left:0; width:100%; font-size:clamp(10px,.73vw,14px); color:var(--paper); }
+.footer-section-nav { position:absolute; top:76%; left:50%; translate:-50% 0; display:flex; justify-content:center; gap:28px; }
+.footer-section-nav a { display:grid; place-items:center; min-height:44px; padding:0 6px; color:var(--paper); font-size:16px; font-weight:500; text-decoration:none; text-underline-offset:6px; }
+.footer-section-nav a:hover { color:var(--point); text-decoration:underline; }
+.back-to-top { position:absolute; right:5.5%; bottom:5.5%; display:flex; flex-direction:column; align-items:center; gap:8px; min-width:88px; padding:6px; color:var(--paper); font-size:16px; font-weight:500; text-decoration:none; }
+.back-to-top img { width:64px; height:64px; object-fit:contain; filter:url(#paper-cutout); opacity:.82; transform-origin:50% 75%; transition:transform .12s steps(2,end),opacity .18s; }
+.back-to-top:hover img,.back-to-top:focus-visible img { transform:translateY(-4px) rotate(-6deg); opacity:1; }
+.footer-section-nav a:focus-visible,.back-to-top:focus-visible { outline:2px solid var(--point); outline-offset:4px; }
+.scene-focus-target:focus { outline:none; }
+.scene-jump-veil { position:fixed; inset:0; z-index:4000; background:var(--paper); opacity:0; pointer-events:none; transition:opacity .16s ease; }
+body.scene-jumping .scene-jump-veil { opacity:1; pointer-events:auto; }
 @media (max-width:1399px) {
   .resume-grid { --cv-unit:1px; grid-template-columns:1fr; gap:40px; min-height:0; padding-top:70px; }
   .resume-column { display:contents; }
@@ -275,6 +285,10 @@ body.maker-credit-landed .footer-credit-text { color:#F7F4EA; }
   .page5 .icon-group { top:61%; gap:12px; }
   .page5 .icon-group img { width:60px; height:60px; }
   .footer-caption { font-size:12px; bottom:8%; }
+  .footer-section-nav { top:73%; width:280px; display:grid; grid-template-columns:1fr 1fr; gap:0 12px; }
+  .footer-section-nav a { font-size:15px; }
+  .back-to-top { right:24px; bottom:24px; min-width:64px; font-size:14px; gap:4px; }
+  .back-to-top img { width:56px; height:56px; }
 }
 /* Static flow is also the fallback when JS or motion is unavailable. */
 body:not(.horizontal-enabled) .portfolio-content { height:auto; }
@@ -305,4 +319,6 @@ body:not(.horizontal-enabled) .story-panel { height:auto; overflow:visible; }
   .hero-symbol .symbol-icon { animation:none; opacity:1; transform:none; }
   .page1 .name { opacity:1; }
   .page5 .icon-group img { transform:none; transition:none; }
+  .back-to-top img,.back-to-top:hover img,.back-to-top:focus-visible img { transform:none; transition:none; }
+  .scene-jump-veil { transition:none; }
 }
