@@ -447,17 +447,26 @@ document.addEventListener("pointerout", event => {
   if (!event.relatedTarget) { cursorPresent=false; updateCoverCursor(); }
 }, {passive:true});
 window.addEventListener("blur", () => { cursorPresent=false; updateCoverCursor(); });
+function resetSymbolPose(symbol) {
+  ["x","y"].forEach(axis=>symbol.style.setProperty(`--symbol-${axis}`,"0px"));
+  ["tilt","pitch","yaw"].forEach(axis=>symbol.style.setProperty(`--symbol-${axis}`,"0deg"));
+}
+// Rigid paper poses: center, inner edge and outer edge. The artwork does not
+// stretch or continuously chase the pointer between these discrete positions.
+const paperStep=value=>Math.abs(value)<.22 ? 0 : Math.sign(value)*(Math.abs(value)<.68 ? 1 : 2);
 heroSymbols.forEach(symbol => {
   symbol.addEventListener("pointermove", event => {
     if (!motionAllowed() || event.pointerType === "touch" || !symbol.classList.contains("is-ready")) return;
     const box=symbol.getBoundingClientRect();
-    const x=clamp((event.clientX-box.left-box.width/2)*.15,-9,9);
-    const y=clamp((event.clientY-box.top-box.height/2)*.15,-9,9);
-    symbol.style.setProperty("--symbol-x", `${x}px`);
-    symbol.style.setProperty("--symbol-y", `${y}px`);
-    symbol.style.setProperty("--symbol-tilt", `${x*.3}deg`);
+    const x=paperStep(clamp((event.clientX-box.left-box.width/2)/(box.width/2),-1,1));
+    const y=paperStep(clamp((event.clientY-box.top-box.height/2)/(box.height/2),-1,1));
+    symbol.style.setProperty("--symbol-x", `${x*3}px`);
+    symbol.style.setProperty("--symbol-y", `${y*2}px`);
+    symbol.style.setProperty("--symbol-tilt", `${x*2.5-y}deg`);
+    symbol.style.setProperty("--symbol-pitch", `${-y*5}deg`);
+    symbol.style.setProperty("--symbol-yaw", `${x*6}deg`);
   });
-  const reset=()=>{symbol.style.setProperty("--symbol-x","0px");symbol.style.setProperty("--symbol-y","0px");symbol.style.setProperty("--symbol-tilt","0deg");};
+  const reset=()=>resetSymbolPose(symbol);
   symbol.addEventListener("pointerleave",reset);
   symbol.addEventListener("pointercancel",reset);
 });
@@ -617,11 +626,7 @@ document.fonts?.ready.then(() => {
 function resetPointerEffects() {
   cursorPresent=false;
   updateCoverCursor();
-  heroSymbols.forEach(symbol=>{
-    symbol.style.setProperty("--symbol-x","0px");
-    symbol.style.setProperty("--symbol-y","0px");
-    symbol.style.setProperty("--symbol-tilt","0deg");
-  });
+  heroSymbols.forEach(resetSymbolPose);
   currentStoryIndex = -1;
   measureStory();
   footer.classList.toggle("motion-ready", !reducedMotion.matches);

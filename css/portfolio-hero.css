@@ -27,9 +27,8 @@ header.header-on-perspective .category,header.header-on-perspective .year { colo
 .portfolio-ink.is-complete .ink-letter { visibility:hidden; }
 .ink-letter img { width:100%; height:100%; object-fit:contain; mask-image:linear-gradient(#000,#000); mask-repeat:no-repeat; mask-position:top left; mask-size:100% 100%; }
 .hero-symbol { position:absolute; width:clamp(90px,10vw,180px); opacity:0; pointer-events:none; animation:symbol-arrive 1.6s linear var(--symbol-delay) both; }
-.symbol-motion { display:block; position:relative; transform:translate3d(var(--symbol-x,0px),var(--symbol-y,0px),0) rotate(var(--symbol-tilt,0deg)); transition:transform .4s cubic-bezier(.22,1,.36,1),scale .4s; }
+.symbol-motion { display:block; position:relative; transform-origin:50% 58%; transform:perspective(600px) translate3d(var(--symbol-x,0px),var(--symbol-y,0px),0) rotateZ(var(--symbol-tilt,0deg)) rotateX(var(--symbol-pitch,0deg)) rotateY(var(--symbol-yaw,0deg)); transition:transform .12s steps(2,end); }
 .hero-symbol.is-ready { pointer-events:auto; }
-.hero-symbol.is-ready:hover .symbol-motion { scale:1.035; }
 .hero-symbol img { display:block; width:100%; height:auto; animation:symbol-drift 7s ease-in-out calc(var(--symbol-delay) + .85s) infinite; }
 .paper-reveal { position:absolute; inset:0; perspective:500px; transform-style:preserve-3d; pointer-events:none; filter:drop-shadow(0 3px 3px rgb(0 0 0 / 15%)); }
 .paper-ball,.paper-open,.paper-sheet { position:absolute; inset:0; opacity:0; visibility:hidden; transform-style:preserve-3d; backface-visibility:hidden; }
