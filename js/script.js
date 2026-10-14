@@ -174,6 +174,8 @@ let storyWidth = 0;
 let currentStoryIndex = -1;
 const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
 let coverRunway=0;
+let coverAnimationDistance=0;
+let coverReadingHold=0;
 
 // Direction stays above Perspective. Only the lower green section enters from
 // the right; the assembled introduction, About and Project then push to the left.
@@ -299,7 +301,9 @@ const makerCredit=document.querySelector(".maker-credit");
 const footerCreditText=footer.querySelector(".footer-credit-text");
 let makerOrigin=null;
 function measureCover() {
-  coverRunway=reducedMotion.matches ? 0 : Math.max(1400,heroStage.offsetHeight*2.1);
+  coverAnimationDistance=reducedMotion.matches ? 0 : Math.max(1400,heroStage.offsetHeight*2.1);
+  coverReadingHold=reducedMotion.matches ? 0 : Math.max(260,heroStage.offsetHeight*.38);
+  coverRunway=coverAnimationDistance+coverReadingHold;
   document.body.style.setProperty("--cover-runway",`${coverRunway}px`);
 }
 function updateMakerCredit() {
@@ -372,7 +376,7 @@ function captureCoverAnimations() {
   coverAnimations.forEach(animation=>animation.pause());
 }
 function updateCoverSequence() {
-  const progress=reducedMotion.matches ? 1 : clamp(window.scrollY/Math.max(1,coverRunway),0,1);
+  const progress=reducedMotion.matches ? 1 : clamp(window.scrollY/Math.max(1,coverAnimationDistance),0,1);
   const time=progress*coverDuration;
   coverAnimations.forEach(animation=>{animation.currentTime=time*1000;});
   heroSymbols.forEach(symbol=>{
@@ -382,6 +386,7 @@ function updateCoverSequence() {
   document.body.classList.toggle("cover-intro-active",window.scrollY<=coverRunway+2);
   if(window.scrollY<=coverRunway+2) header.classList.remove("hide");
   hero.dataset.coverProgress=progress.toFixed(4);
+  hero.dataset.coverHold=reducedMotion.matches ? "1.0000" : clamp((window.scrollY-coverAnimationDistance)/Math.max(1,coverReadingHold),0,1).toFixed(4);
 }
 captureCoverAnimations();
 const coverCursor = document.querySelector(".cover-cursor");

@@ -52,7 +52,7 @@ body.cursor-flight-active .design-symbol .paper-reveal,body.cursor-flight-active
 @keyframes paper-sheet { 0%,40% { opacity:0; visibility:hidden; } 50%,64% { opacity:1; visibility:visible; } 84%,100% { opacity:0; visibility:hidden; } }
 @keyframes paper-panel-open { from { transform:rotateX(var(--fold-x)) rotateY(var(--fold-y)); filter:brightness(.82); } to { transform:rotateX(0deg) rotateY(0deg); filter:brightness(1); } }
 @keyframes paper-icon-form { 0%,62% { opacity:0; transform:rotateX(30deg) rotateY(-12deg) scale(.72); } 82% { opacity:.8; transform:rotateX(4deg) rotateY(-2deg) scale(.96); } 100% { opacity:1; transform:rotateX(0deg) rotateY(0deg) scale(1); } }
-.content-symbol { left:7.5%; top:46%; --symbol-delay:.2s; --symbol-rotation:-10deg; --symbol-enter-x:-120vw; --symbol-enter-y:-8vh; }
+.content-symbol { left:5.5%; top:44%; width:clamp(72px,8.2vw,148px); --symbol-delay:.2s; --symbol-rotation:-10deg; --symbol-enter-x:-120vw; --symbol-enter-y:-8vh; }
 .heritage-symbol { right:8%; top:22%; --symbol-delay:2s; --symbol-rotation:15deg; --symbol-enter-x:50vw; --symbol-enter-y:-75vh; }
 .design-symbol { right:5%; top:57%; width:clamp(60px,6vw,115px); --symbol-delay:3.8s; --symbol-rotation:-12deg; --symbol-enter-x:50vw; --symbol-enter-y:65vh; }
 .page1 .name { position:absolute; left:50%; bottom:11%; translate:-50% 0; color:var(--paper); font-size:22px; font-weight:500; white-space:nowrap; text-shadow:0 4px 4px rgb(0 0 0 / 25%); animation:name-arrive .7s ease 4.3s both; }
@@ -235,7 +235,7 @@ body.maker-credit-landed .footer-credit-text { color:#F7F4EA; }
   .header-inner { padding:26px 24px; }
   .category,.year { font-size:20px; }
   .portfolio-ink { width:94%; left:3%; top:47%; }
-  .content-symbol { left:5%; top:24%; width:70px; }
+  .content-symbol { left:4%; top:23%; width:58px; }
   .heritage-symbol { right:9%; top:29%; width:90px; }
   .design-symbol { right:7%; top:62%; width:50px; }
   .page1 .name { bottom:12%; font-size:18px; }

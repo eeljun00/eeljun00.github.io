@@ -1,0 +1,35 @@
+/* Shared Design / Process choice motion; destination links stay native. */
+.project-choice { height:100svh; background-size:cover; background-position:center; }
+.project-choice .choice-panel { flex:1 1 0; width:auto; min-width:0; height:100%; transition:flex-grow .65s cubic-bezier(.22,1,.36,1); }
+.project-choice .choice-panel:first-child { border-inline-end:1px solid rgb(255 255 255 / 25%); }
+.project-choice .choice-panel::before { background:rgb(0 0 0 / 32%); transition:background .5s ease; }
+.project-choice .choice-panel p { font-size:clamp(48px,6.7vw,96px); white-space:nowrap; translate:0 0; transition:translate .5s cubic-bezier(.22,1,.36,1),color .3s ease; }
+.project-choice .choice-panel a { padding:20px 52px 20px 28px; white-space:nowrap; box-shadow:none; transition:transform .35s cubic-bezier(.22,1,.36,1),color .3s ease; }
+.project-choice .choice-panel a::after { content:"↗"; position:absolute; right:22px; top:50%; translate:-8px -50%; opacity:0; transition:translate .35s ease,opacity .3s ease; pointer-events:none; }
+.project-choice .choice-panel a:focus-visible { outline:2px solid #F7F4EA; outline-offset:6px; color:#2F352B; }
+.project-choice .choice-panel a:focus-visible::before { transform:scaleX(1); }
+.project-choice .choice-panel a:focus-visible::after { opacity:1; translate:0 -50%; }
+.project-choice .choice-panel a:active { transform:translate(-50%,-50%) scale(.97); }
+.project-choice .choice-panel:focus-within { flex-grow:1.12; }
+.project-choice .choice-panel:focus-within::before { background:rgb(0 0 0 / 48%); }
+.project-choice .choice-panel:focus-within p { translate:0 -8px; }
+@media (hover:hover) and (pointer:fine) {
+  .project-choice .choice-panel:hover { flex-grow:1.12; }
+  .project-choice .choice-panel:hover::before { background:rgb(0 0 0 / 48%); }
+  .project-choice .choice-panel:hover p { translate:0 -8px; }
+  .project-choice .choice-panel a:hover { transform:translate(-50%,-50%) translateY(-3px); }
+  .project-choice .choice-panel a:hover::after { opacity:1; translate:0 -50%; }
+}
+@media (max-width:700px) {
+  .project-choice { flex-direction:column; }
+  .project-choice .choice-panel:first-child { border-inline-end:0; border-bottom:1px solid rgb(255 255 255 / 25%); }
+  .project-choice .choice-panel p { top:42%; font-size:clamp(40px,10vw,64px); }
+  .project-choice .choice-panel a { top:70%; font-size:16px; padding:14px 44px 14px 22px; }
+  .project-choice .choice-panel a::after { opacity:1; translate:0 -50%; right:18px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .project-choice .choice-panel,.project-choice .choice-panel::before,.project-choice .choice-panel p,.project-choice .choice-panel a,.project-choice .choice-panel a::before,.project-choice .choice-panel a::after { transition:none; }
+  .project-choice .choice-panel:hover,.project-choice .choice-panel:focus-within { flex-grow:1; }
+  .project-choice .choice-panel:hover p,.project-choice .choice-panel:focus-within p { translate:none; }
+  .project-choice .choice-panel a:hover { transform:translate(-50%,-50%); }
+}
