@@ -207,14 +207,14 @@ body.maker-credit-landed .footer-credit-text { color:#F7F4EA; }
 .page5 .icon-group a:nth-child(2):hover,.page5 .icon-group a:nth-child(2):focus-visible { --contact-turn:6deg; }
 .page5 .icon-group a:hover img,.page5 .icon-group a:focus-visible img { opacity:1; filter:brightness(1.02) saturate(1); }
 .page5 .icon-group a:focus-visible { outline:2px solid var(--point); outline-offset:4px; }
-.footer-utility { position:absolute; bottom:48px; left:clamp(40px,8.333vw,160px); right:clamp(40px,8.333vw,160px); display:flex; justify-content:space-between; align-items:center; gap:32px; }
-.footer-return { display:flex; align-items:center; gap:16px; }
-.footer-caption { margin:0; font-size:14px; line-height:1.4; font-weight:400; white-space:nowrap; color:var(--paper); }
+.footer-utility { position:absolute; bottom:48px; left:clamp(40px,8.333vw,160px); right:clamp(40px,8.333vw,160px); display:flex; justify-content:space-between; align-items:flex-end; gap:32px; }
+.footer-return { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.footer-caption { display:grid; place-items:center; min-height:44px; margin:0; font-size:14px; line-height:1.4; font-weight:400; white-space:nowrap; color:var(--paper); }
 .footer-section-nav { display:flex; align-items:center; gap:20px; }
 .footer-section-nav a { display:grid; place-items:center; min-height:44px; color:var(--paper); font-size:14px; line-height:1.4; font-weight:400; text-decoration:none; text-underline-offset:6px; }
 .footer-section-nav a:hover { color:var(--point); text-decoration:underline; }
-.back-to-top { display:grid; place-items:center; flex:0 0 48px; width:48px; min-height:48px; padding:4px; text-decoration:none; }
-.back-to-top img { width:40px; height:40px; object-fit:contain; filter:url(#paper-cutout); opacity:.82; transform-origin:50% 75%; transition:transform .12s steps(2,end),opacity .18s; }
+.back-to-top { display:grid; place-items:center; flex:0 0 auto; width:64px; min-height:64px; padding:4px; text-decoration:none; }
+.back-to-top img { width:56px; height:56px; object-fit:contain; filter:url(#paper-cutout); opacity:.82; transform-origin:50% 75%; transition:transform .12s steps(2,end),opacity .18s; }
 .back-to-top:hover img,.back-to-top:focus-visible img { transform:translateY(-2px) rotate(-4deg); opacity:1; }
 .footer-section-nav a:focus-visible,.back-to-top:focus-visible { outline:2px solid var(--point); outline-offset:4px; }
 .scene-focus-target:focus { outline:none; }
