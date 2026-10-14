@@ -1,264 +1,474 @@
 <!doctype html>
 <html lang="ko">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>이준화_PORTFOLIO</title>
-  <meta property="og:type" content="website" />
-    <meta property="og:title" content="이준화 포트폴리오입니다." />
-    <meta property="og:description" content="형태는 자유롭지만, 흐름은 끊기지 않게." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이준화 | JunHwa Lee — Design Portfolio</title>
+    <meta name="description" content="정보에 길을 만듭니다. 문화·콘텐츠와 사람을 연결해온 경험으로 명확한 사용자 경험을 설계하는 이준화의 디자인 포트폴리오입니다." />
+    <meta name="theme-color" content="#F7F4EA" />
+    <link rel="canonical" href="https://eeljun00.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="JunHwa Lee Design Portfolio" />
+    <meta property="og:title" content="이준화 | JunHwa Lee — Design Portfolio" />
+    <meta property="og:description" content="정보에 길을 만듭니다. 사람과 콘텐츠를 연결하는 UI/UX 디자인 포트폴리오." />
     <meta property="og:url" content="https://eeljun00.github.io/" />
-    <meta property="og:image" content="https://eeljun00.github.io/image/thumb_new.png" />
+    <meta property="og:image" content="https://eeljun00.github.io/image/portfolio-og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="초원과 푸른 하늘 위에 붓으로 쓴 Portfolio와 종이 아이콘, by. JUNHWA LEE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="이준화 | JunHwa Lee — Design Portfolio" />
+    <meta name="twitter:description" content="정보에 길을 만듭니다. 사람과 콘텐츠를 연결하는 UI/UX 디자인 포트폴리오." />
+    <meta name="twitter:image" content="https://eeljun00.github.io/image/portfolio-og.png" />
+    <meta name="twitter:image:alt" content="초원 위 Portfolio 페인트 타이포와 종이 아이콘" />
 
-  <!-- jquery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Lenis: 부드러운 휠 스크롤 -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css" />
+    <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js" defer></script>
 
-  <!-- aos -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/portfolio-hero.css" />
+    <link rel="preload" as="image" href="image/paper-unfold-atlas.png" />
+    <script src="js/meadow-motion.js" defer></script>
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="cover-cursor" aria-hidden="true"><img src="image/DESIGN.png" alt="" /></div>
+    <p class="maker-credit"><span class="maker-prefix">by.</span> <span>JUNHWA LEE</span></p>
+    <header>
+      <div class="header-inner"><span class="category">Design Portfolio</span><span class="year">2026</span></div>
+    </header>
+    <main class="cover-transition">
+      <section class="page1" data-header-theme="dark" aria-labelledby="portfolio-title">
+        <div class="hero-stage">
+          <img class="meadow-background" src="image/background.png" alt="" fetchpriority="high" />
+          <canvas class="meadow-canvas" aria-hidden="true"></canvas>
+          <div class="hero-wash" aria-hidden="true"></div>
+          <h1 class="portfolio-ink" id="portfolio-title">
+            <span class="sr-only">Portfolio</span
+            ><span class="ink-letter" style="--letter-mask: polygon(0% 0%, 0% 100%, 19% 100%, 19% 62%, 29% 48%, 29% 0%); --letter-center: 15.5%; --ink-delay: 0.65s"
+              ><svg viewBox="0 0 1672 941" aria-hidden="true">
+                <defs>
+                  <mask id="paint-0" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+                    <path class="paint-stroke" d="M165 710 Q180 505 235 372" pathLength="1" style="--stroke-delay: 0s" />
+                    <path class="paint-stroke" d="M132 402 Q325 238 410 344 Q455 484 170 558" pathLength="1" style="--stroke-delay: 0.12s" />
+                  </mask>
+                </defs>
+                <image href="image/portfolio.png" width="1672" height="941" mask="url(#paint-0)" /></svg></span
+            ><span class="ink-letter" style="--letter-mask: polygon(29% 0%, 29% 48%, 19% 62%, 19% 100%, 32% 100%, 32% 0%); --letter-center: 25.5%; --ink-delay: 0.99s"
+              ><svg viewBox="0 0 1672 941" aria-hidden="true">
+                <defs>
+                  <mask id="paint-1" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+                    <path class="paint-stroke" d="M500 554 C378 524 305 656 402 690 C512 740 556 570 480 548" pathLength="1" style="--stroke-delay: 0s" />
+                  </mask>
+                </defs>
+                <image href="image/portfolio.png" width="1672" height="941" mask="url(#paint-1)" /></svg></span
+            ><span class="ink-letter" style="--letter-mask: polygon(32% 0%, 32% 100%, 40.5% 100%, 40.5% 65%, 37% 50%, 37% 0%); --letter-center: 36.25%; --ink-delay: 1.33s"
+              ><svg viewBox="0 0 1672 941" aria-hidden="true">
+                <defs>
+                  <mask id="paint-2" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+                    <path class="paint-stroke" d="M584 576 L576 694 Q594 634 622 595 L650 582" pathLength="1" style="--stroke-delay: 0s" />
+                  </mask>
+                </defs>
+                <image href="image/portfolio.png" width="1672" height="941" mask="url(#paint-2)" /></svg></span
+            ><span class="ink-letter" style="--letter-mask: polygon(37% 0%, 37% 50%, 40.5% 65%, 40.5% 100%, 47% 100%, 47% 65%, 50% 48%, 50% 0%); --letter-center: 43.75%; --ink-delay: 1.67s"
+              ><svg viewBox="0 0 1672 941" aria-hidden="true">
+                <defs>
+                  <mask id="paint-3" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+                    <path class="paint-stroke" d="M735 419 Q688 556 738 693 L781 679" pathLength="1" style="--stroke-delay: 0s" />
+                    <path class="paint-stroke" d="M673 505 L801 466" pathLength="1" style="--stroke-delay: 0.12s" />
+                  </mask>
+                </defs>
+                <image href="image/portfolio.png" width="1672" height="941" mask="url(#paint-3)" /></svg></span
+            ><span class="ink-letter" style="--letter-mask: polygon(50% 0%, 50% 48%, 47% 65%, 47% 100%, 56% 100%, 56% 63%, 60% 49%, 60% 0%); --letter-center: 51.5%; --ink-delay: 2.01s"
+              ><svg viewBox="0 0 1672 941" aria-hidden="true">
+                <defs>
+                  <mask id="paint-4" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+                    <path class="paint-stroke" d="M860 706 Q851 539 893 379 Q936 298 975 344" pathLength="1" style="--stroke-delay: 0s" />
+                    <path class="paint-stroke" d="M810 559 L963 508" pathLength="1" style="--stroke-delay: 0.12s" />
+                  </mask>
+                </defs>
+                <image href="image/portfolio.png" width="1672" height="941" mask="url(#paint-4)" /></svg></span
+            ><span class="ink-letter" style="--letter-mask: polygon(60% 0%, 60% 49%, 56% 63%, 56% 100%, 70% 100%, 70% 65%, 69% 50%, 69% 0%); --letter-center: 63%; --ink-delay: 2.35s"
+              ><svg viewBox="0 0 1672 941" aria-hidden="true">
+                <defs>
+                  <mask id="paint-5" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+                    <path class="paint-stroke" d="M1090 563 C993 551 927 653 1004 696 C1092 752 1174 614 1090 563" pathLength="1" style="--stroke-delay: 0s" />
+                  </mask>
+                </defs>
+                <image href="image/portfolio.png" width="1672" height="941" mask="url(#paint-5)" /></svg></span
+            ><span class="ink-letter" style="--letter-mask: polygon(69% 0%, 69% 50%, 70% 65%, 70% 100%, 75.5% 100%, 75.5% 67%, 77% 50%, 77% 0%); --letter-center: 72.75%; --ink-delay: 2.69s"
+              ><svg viewBox="0 0 1672 941" aria-hidden="true">
+                <defs>
+                  <mask id="paint-6" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+                    <path class="paint-stroke" d="M1230 414 Q1210 537 1232 705" pathLength="1" style="--stroke-delay: 0s" />
+                  </mask>
+                </defs>
+                <image href="image/portfolio.png" width="1672" height="941" mask="url(#paint-6)" /></svg></span
+            ><span class="ink-letter" style="--letter-mask: polygon(77% 0%, 77% 50%, 75.5% 67%, 75.5% 100%, 80.5% 100%, 80.5% 62%, 82% 50%, 82% 0%); --letter-center: 78%; --ink-delay: 3.03s"
+              ><svg viewBox="0 0 1672 941" aria-hidden="true">
+                <defs>
+                  <mask id="paint-7" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+                    <path class="paint-stroke" d="M1299 595 L1297 691" pathLength="1" style="--stroke-delay: 0s" />
+                    <path class="paint-stroke" d="M1292 498 L1299 495" pathLength="1" style="--stroke-delay: 0.12s" />
+                  </mask>
+                </defs>
+                <image href="image/portfolio.png" width="1672" height="941" mask="url(#paint-7)" /></svg></span
+            ><span class="ink-letter" style="--letter-mask: polygon(82% 0%, 82% 50%, 80.5% 62%, 80.5% 100%, 100% 100%, 100% 0%); --letter-center: 90.25%; --ink-delay: 3.37s"
+              ><svg viewBox="0 0 1672 941" aria-hidden="true">
+                <defs>
+                  <mask id="paint-8" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+                    <path class="paint-stroke" d="M1490 560 C1381 531 1316 681 1422 719 C1541 762 1596 586 1490 560" pathLength="1" style="--stroke-delay: 0s" />
+                    <path class="paint-stroke" d="M1574 486 L1595 468" pathLength="1" style="--stroke-delay: 0.12s" />
+                    <path class="paint-stroke" d="M1598 530 L1620 525" pathLength="1" style="--stroke-delay: 0.24s" />
+                  </mask>
+                </defs>
+                <image href="image/portfolio.png" width="1672" height="941" mask="url(#paint-8)" /></svg></span
+            ><img class="portfolio-whole" src="image/portfolio.png" alt="" />
+          </h1>
+          <div class="hero-symbol content-symbol">
+            <span class="symbol-motion"
+              ><span class="paper-reveal" aria-hidden="true"
+                ><span class="paper-ball"></span><span class="paper-open"></span
+                ><span class="paper-sheet"
+                  ><span class="paper-panel paper-panel-tl"></span><span class="paper-panel paper-panel-tr"></span><span class="paper-panel paper-panel-bl"></span
+                  ><span class="paper-panel paper-panel-br"></span></span></span
+              ><img class="symbol-icon" src="image/CONTENT.png" alt=""
+            /></span>
+          </div>
+          <div class="hero-symbol heritage-symbol">
+            <span class="symbol-motion"
+              ><span class="paper-reveal" aria-hidden="true"
+                ><span class="paper-ball"></span><span class="paper-open"></span
+                ><span class="paper-sheet"
+                  ><span class="paper-panel paper-panel-tl"></span><span class="paper-panel paper-panel-tr"></span><span class="paper-panel paper-panel-bl"></span
+                  ><span class="paper-panel paper-panel-br"></span></span></span
+              ><img class="symbol-icon" src="image/HERITAGE.png" alt=""
+            /></span>
+          </div>
+          <div class="hero-symbol design-symbol">
+            <span class="symbol-motion"
+              ><span class="paper-reveal" aria-hidden="true"
+                ><span class="paper-ball"></span><span class="paper-open"></span
+                ><span class="paper-sheet"
+                  ><span class="paper-panel paper-panel-tl"></span><span class="paper-panel paper-panel-tr"></span><span class="paper-panel paper-panel-bl"></span
+                  ><span class="paper-panel paper-panel-br"></span></span></span
+              ><img class="symbol-icon" src="image/DESIGN.png" alt=""
+            /></span>
+          </div>
+          <p class="name"><span class="maker-prefix">by.</span> <span>JUNHWA LEE</span></p>
+        </div>
+      </section>
+      <div class="cover-scroll-space" aria-hidden="true"></div>
+      <div class="portfolio-content horizontal-story">
+        <div class="story-stage">
+          <div class="story-track">
+            <div class="story-panel intro-panel">
+              <div class="panel-body intro-body">
+                <section class="page2 editorial-section" id="direction" data-header-theme="light" aria-labelledby="direction-label">
+                  <div class="panel-body">
+                    <div class="editorial-grid">
+                      <h2 class="section-label reveal-item" id="direction-label">Direction.</h2>
+                      <div class="editorial-copy">
+                        <h3 class="direction-heading reveal-item">
+                          <span><strong class="direction-accent">정보</strong>에</span><span><strong class="direction-way">길</strong>을 만듭니다.</span>
+                        </h3>
+                        <p class="direction-english reveal-item">DESIGNING THE WAY THROUGH.</p>
+                        <p class="editorial-body reveal-item">
+                          <span class="copy-line">흩어진 정보와 콘텐츠를 정리하고 연결해,</span><span class="copy-line">사용자가 쉽게 이해하고 행동할 수 있는 경험을 설계합니다.</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="page3 editorial-section" id="perspective" data-header-theme="dark" aria-labelledby="perspective-label">
+                  <div class="panel-body">
+                    <div class="editorial-grid">
+                      <h2 class="section-label reveal-item" id="perspective-label">Perspective.</h2>
+                      <div class="editorial-copy perspective-copy">
+                        <h3 class="perspective-lead reveal-item">다양한 사람의 관점에서,<br /><strong>문제를 바라보는 법</strong>을 배웠습니다.</h3>
+                        <p class="editorial-body reveal-item">
+                          <span class="copy-line">문화·콘텐츠 기획과 제작, 국제행사 운영을 경험하며</span><span class="copy-line">다양한 사람과 협업하고 정보를 조율해왔습니다.</span>
+                        </p>
+                        <p class="editorial-body reveal-item">
+                          <span class="copy-line">이 과정에서 쌓은 관찰과 소통의 경험을 바탕으로,</span><span class="copy-line">사용자의 목적을 이해하고 더 명확한 해결 방법을 고민합니다.</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+            <section class="about-section story-panel" id="about" data-header-theme="light" aria-labelledby="about-label">
+              <div class="panel-body">
+                <h2 class="section-label reveal-item" id="about-label">About.</h2>
+                <div class="about-layout">
+                  <div class="about-profile">
+                    <img src="image/about_img.png" alt="이준화 프로필 사진" />
+                    <p class="profile-name reveal-item">이준화 <span class="profile-divider" aria-hidden="true">|</span> JunHwa LEE</p>
+                    <p class="profile-details reveal-item">2000.01.28<br /><a href="tel:01056065659">010-5606-5659</a><br /><a href="mailto:eeeljun@gmail.com">eeeljun@gmail.com</a></p>
+                  </div>
+                  <div class="about-resume" aria-label="이준화 경력과 이력">
+                    <div class="resume-grid">
+                      <div class="resume-column resume-left">
+                        <section class="resume-section resume-career" aria-labelledby="resume-career">
+                          <h3 id="resume-career">Career</h3>
+                          <dl class="resume-rows">
+                            <div class="resume-row">
+                              <dt>2026.06 - 2026.09</dt>
+                              <dd>세계유산지속가능센터 근무</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2024.03 - 2024.10</dt>
+                              <dd>유네스코 세계유산 국제해석설명센터 정보관리실 근무</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2023.03 - 2023.08</dt>
+                              <dd>유네스코 세계유산 국제해석설명센터 전략기획실 인턴</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2021.07 - 2021.08</dt>
+                              <dd>국립민속박물관 민속연구과 인턴</dd>
+                            </div>
+                          </dl>
+                        </section>
+                        <section class="resume-section resume-experiences" aria-labelledby="resume-experiences">
+                          <h3 id="resume-experiences">Experiences</h3>
+                          <dl class="resume-rows">
+                            <div class="resume-row">
+                              <dt>2025.05 - 2025.12</dt>
+                              <dd>AI를 활용한 UI/UX 웹 퍼블리싱 과정 수료</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2023.07 - 2023.12</dt>
+                              <dd>
+                                2023 안동 축제 서포터즈 - 페스타프렌즈 1기
+                                <p class="resume-note">· 사용자 경험 확장을 위한 축제 굿즈 및 SNS 콘텐츠 디자인</p>
+                              </dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2022.10 - 2023.02</dt>
+                              <dd>
+                                ANU 글로벌봉사단 8기 교육팀 팀장
+                                <p class="resume-note">· 교육 콘텐츠 기획 및 워크북 제작</p>
+                              </dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2022.02 - 2023.02</dt>
+                              <dd>
+                                KT&amp;G 상상유니브 서포터즈 - 상상프렌즈 14기(경북)
+                                <p class="resume-note">· 온·오프라인 통합 홍보 시스템 구축 및 비주얼 디자인</p>
+                              </dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2022.02 - 2022.08</dt>
+                              <dd>제44회 민속학과 학생회 홍보부장</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2019.06 - 2019.11</dt>
+                              <dd>
+                                문화유산 지킴이 서포터즈(경북)
+                                <p class="resume-note">· 문화유산 가치 보존 및 현대적 활용을 위한 전시 홍보물 기획·제작</p>
+                              </dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2019.03 - 2019.10</dt>
+                              <dd>
+                                교내 방송국 AUBS 국원
+                                <p class="resume-note">· 교내외 송출 방송 콘텐츠 아이덴티티 구축 및 홍보 비주얼 제작</p>
+                              </dd>
+                            </div>
+                          </dl>
+                        </section>
+                        <section class="resume-section resume-tool" aria-labelledby="resume-tool">
+                          <h3 id="resume-tool">Tool</h3>
+                          <ul class="resume-tools">
+                            <li><span class="tool-logo" role="img" aria-label="Photoshop" style="--tool-index: 0"></span></li>
+                            <li><span class="tool-logo" role="img" aria-label="Illustrator" style="--tool-index: 1"></span></li>
+                            <li><span class="tool-logo" role="img" aria-label="Premiere Pro" style="--tool-index: 2"></span></li>
+                            <li><span class="tool-logo" role="img" aria-label="Figma" style="--tool-index: 3"></span></li>
+                            <li><span class="tool-logo" role="img" aria-label="HTML" style="--tool-index: 4"></span></li>
+                            <li><span class="tool-logo" role="img" aria-label="CSS" style="--tool-index: 5"></span></li>
+                            <li><span class="tool-logo" role="img" aria-label="Notion" style="--tool-index: 6"></span></li>
+                          </ul>
+                        </section>
+                      </div>
+                      <div class="resume-column resume-right">
+                        <section class="resume-section resume-education" aria-labelledby="resume-education">
+                          <h3 id="resume-education">Education</h3>
+                          <dl class="resume-rows">
+                            <div class="resume-row">
+                              <dt>2023.08</dt>
+                              <dd>
+                                국립경국대학교 민속학과 졸업
+                                <p class="resume-note">· 디지털마케팅 복수 전공</p>
+                              </dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2019.03</dt>
+                              <dd>국립경국대학교 미술학과 입학</dd>
+                            </div>
+                          </dl>
+                        </section>
+                        <section class="resume-section resume-awards" aria-labelledby="resume-awards">
+                          <h3 id="resume-awards">Exhibition &amp; Awards</h3>
+                          <dl class="resume-rows">
+                            <div class="resume-row">
+                              <dt>2021 - 2022</dt>
+                              <dd>성적 우수 장학금(총 4회)</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2020.</dt>
+                              <dd>제1회 청송야송미술대전 입선</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2019.11</dt>
+                              <dd>영주 진사조공 단체전시회 참가</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2019.11</dt>
+                              <dd>교내 학생 전시회 참가</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2019.04</dt>
+                              <dd>연묵회(동아리) 전시회 참가</dd>
+                            </div>
+                          </dl>
+                        </section>
+                        <section class="resume-section resume-certificate" aria-labelledby="resume-certificate">
+                          <h3 id="resume-certificate">Certificate</h3>
+                          <dl class="resume-rows">
+                            <div class="resume-row">
+                              <dt>2026.01</dt>
+                              <dd>웹디자인기능사 필기</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2022.02</dt>
+                              <dd>GTQ 일러스트 2급 (Illustrator)</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2021.11</dt>
+                              <dd>Adobe Pro : Photoshop CC 2020</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2023.12</dt>
+                              <dd>한국사능력검정시험 3급</dd>
+                            </div>
+                            <div class="resume-row">
+                              <dt>2019.03</dt>
+                              <dd>운전면허 2종 보통</dd>
+                            </div>
+                          </dl>
+                        </section>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="page4 story-panel" id="projects" data-header-theme="light" aria-labelledby="project-label">
+              <div class="panel-body">
+                <h2 class="Project section-label reveal-item" id="project-label">Project.</h2>
+                <div class="box_group">
+                  <div class="project-row box1">
+                    <a href="html/sub1.html" class="project-link">
+                      <span class="project-name">Loopyit</span>
+                      <span class="project-details">Web UX/UI · Branding · Publishing</span>
+                    </a>
+                    <span class="project-preview">
+                      <a href="html/sub1.html" class="img-box Loopyit_img" tabindex="-1" aria-label="Loopyit 프로젝트 열기">
+                        <img src="image_sub/Loopyit-img.png" alt="Loopyit 프로젝트 미리보기" />
+                      </a>
+                    </span>
+                  </div>
 
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="js/script.js" defer></script>
-</head>
-<body>
-  <header>
-    <div class="header-inner glass" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="1700">
-      <div class="wrapper">
-        <div class="liquidGlass-wrapper dock">
-          <div class="liquidGlass-effect"></div>
-          <div class="liquidGlass-tint"></div>
-          <div class="liquidGlass-shine"></div>
-          <div class="liquidGlass-text">
-            <div class="year">2026</div>
-            <div class="category">Design Portfolio</div>
+                  <div class="project-row box5">
+                    <a
+                      href="https://www.figma.com/proto/uwlKkOaaMTumuTD2LVbTBm/%EC%9D%B4%EC%A4%80%ED%99%94-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4?node-id=148-2304&amp;viewport=-290%2C643%2C0.06&amp;t=gWU3R1WLuXWgfZbX-1&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;starting-point-node-id=1%3A17413&amp;page-id=0%3A1"
+                      class="project-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span class="project-name">Dango(댕고)</span>
+                      <span class="project-details">App UX/UI · UX Research · Prototyping</span>
+                    </a>
+                    <span class="project-preview">
+                      <a
+                        href="https://www.figma.com/proto/uwlKkOaaMTumuTD2LVbTBm/%EC%9D%B4%EC%A4%80%ED%99%94-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4?node-id=148-2304&amp;viewport=-290%2C643%2C0.06&amp;t=gWU3R1WLuXWgfZbX-1&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;starting-point-node-id=1%3A17413&amp;page-id=0%3A1"
+                        class="img-box Dango_img"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        tabindex="-1"
+                        aria-label="Dango(댕고) 프로젝트 열기"
+                      >
+                        <img src="image_sub/Dango-img.png" alt="Dango(댕고) 프로젝트 미리보기" />
+                      </a>
+                    </span>
+                  </div>
+
+                  <div class="project-row box2">
+                    <a href="html/sub2.html" class="project-link">
+                      <span class="project-name">KCMS</span>
+                      <span class="project-details">Web UX/UI · IA · Responsive</span>
+                    </a>
+                    <span class="project-preview">
+                      <a href="html/sub2.html" class="img-box KMCS_img" tabindex="-1" aria-label="KCMS 프로젝트 열기">
+                        <img src="image_sub/KMCS-img.png" alt="KCMS 프로젝트 미리보기" />
+                      </a>
+                    </span>
+                  </div>
+
+                  <div class="project-row box4">
+                    <a href="html/sub4.html" class="project-link">
+                      <span class="project-name">오리온</span>
+                      <span class="project-details">Web UI · Visual Design · Responsive</span>
+                    </a>
+                    <span class="project-preview">
+                      <a href="html/sub4.html" class="img-box Orion_img" tabindex="-1" aria-label="오리온 프로젝트 열기">
+                        <img src="image_sub/Orion-img.png" alt="오리온 프로젝트 미리보기" />
+                      </a>
+                    </span>
+                  </div>
+
+                  <div class="project-row box3">
+                    <a href="html/sub3.html" class="project-link">
+                      <span class="project-name">폴로</span>
+                      <span class="project-details">Brand Experience · Interaction · Responsive</span>
+                    </a>
+                    <span class="project-preview">
+                      <a href="html/sub3.html" class="img-box Pole_img" tabindex="-1" aria-label="폴로 프로젝트 열기">
+                        <img src="image_sub/Pole-img.png" alt="폴로 프로젝트 미리보기" />
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
-
-      <svg style="display: none">
-        <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
-          <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
-          <!-- Seeds: 14, 17,  -->
-
-          <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-
-          <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
-
-          <feDisplacementMap in="SourceGraphic" in2="softMap" scale="100" />
-        </filter>
-      </svg>
-    </div>
-  </header>
-
-  <!-- page1 -->
-  <section class="page1">
-    <div class="page1_visual">
-      <img src="./image/page1.png" alt="page1 배경 이미지" class="bg" data-aos="fade-in" data-aos-duration="2000" />
-      <div class="title-img">
-        <div data-aos="fade-down" data-aos-duration="2000" data-aos-delay="500">
-          <img src="./image/port.png" alt="포트폴리오 타이틀 1" />
+      <footer class="page5" id="contact" data-header-theme="dark">
+        <div class="page5-img-wrapper"><img src="image/last.png" alt="" /></div>
+        <div class="footer-shade" aria-hidden="true"></div>
+        <div class="panel-body footer-content">
+          <div class="text-group5 reveal-item">
+            <p>다음 경험으로 나아갈 준비가 되었습니다.</p>
+            <p>사람과 정보를 연결하며 쌓아온 경험을 바탕으로, <strong>새로운 길</strong>을 만들겠습니다.</p>
+          </div>
+          <p class="footer-credit">
+            <span class="footer-credit-text"><span class="maker-prefix">by.</span> <span>JUNHWA LEE</span></span>
+          </p>
+          <div class="icon-group">
+            <a href="https://github.com/eeljun00" target="_blank" rel="noopener noreferrer" aria-label="GitHub 열기"><img src="image/icon_github.png" alt="" /></a>
+            <a href="https://www.notion.so/1f24daa3b0fb80769170cc9d5913c0cb" target="_blank" rel="noopener noreferrer" aria-label="Notion 열기"><img src="image/icon_notion.png" alt="" /></a>
+            <a href="https://eeeljun.tistory.com/" target="_blank" rel="noopener noreferrer" aria-label="Tistory 열기"><img src="image/icon_tistory.png" alt="" /></a>
+          </div>
+          <p class="footer-caption">이준화 포트폴리오</p>
         </div>
-        <div data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1000">
-          <img src="./image/folio.png" alt="포트폴리오 타이틀 2" />
-        </div>
-      </div>
-    </div>
-
-    <div class="page1_text">
-      <p class="name" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1400" data-aos-offset="0">
-        JUNHWA LEE
-      </p>
-    </div>
-  </section>
-
-  <!-- page2 -->
-  <section class="page2">
-    <img src="./image/page2.png" alt="구름 배경 이미지" class="bg-2" />
-    <img src="./image/page2_img.png" alt="구름 이미지" class="bg-2 bg-2-1" />
-
-    <div class="text-group">
-      <div class="text-kr" data-aos="fade-up" data-aos-duration="2000">
-        <p>
-          <span class="bold">형태</span>는 자유롭지만,
-          <span class="bold">흐름</span>은 끊기지 않게.
-        </p>
-        <p>사용자의 경험이 자연스럽게 이어지도록 설계합니다.</p>
-      </div>
-      <div class="text-en" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
-        <p>Fluid in form, seamless in flow.</p>
-        <p>
-          Crafting experiences that drift naturally into the user's journey.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- page3 -->
-  <section class="page3">
-    <div class="page3_left">
-      <div class="About" data-aos="fade-up" data-aos-duration="2000">
-        <p>About.</p>
-      </div>
-
-      <div class="left-text-box">
-        <img src="./image/about_img.png" alt="about_이미지" class="about_img" />
-        <div class="text_group3">
-          <div class="name3">
-            <p>이준화 | JunHwa LEE</p>
-          </div>
-
-          <div class="contact">
-            <p>2000.01.28</p>
-            <p>010-5606-5659</p>
-            <p>eeeljun@gmail.com</p>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="page3_right">
-      <img src="./image/about_text_r.png" alt="about_우측 글" class="about_text_r" />
-    </div>
-  </section>
-
-  <!-- page4 -->
-  <section class="page4">
-    <div class="Project" data-aos="fade-up" data-aos-duration="2000">
-      <p>Project.</p>
-    </div>
-
-    <div class="box_group">
-
-      <div class="box1">
-        <a href="html/sub1.html" class="img-box Loopyit_img">
-          <img src="image_sub/Loopyit-img.png" alt="루피잇썸네일">
-        </a>
-
-        <a href="html/sub1.html">
-
-          <!-- 루피잇 -->
-          <div class="box1_left">
-            <p>Loopyit</p>
-          </div>
-
-          <div class="box1_center">
-            <p>#Team Progject</p>
-            <p>#Brand</p>
-            <p>#HTML/CSS/JS</p>
-          </div>
-
-          <div class="box1_right">
-            <p>2025</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- 대한산악보전회 -->
-      <div class="box2">
-        <a href="html/sub2.html" class="img-box KMCS_img">
-          <img src="image_sub/KMCS-img.png" alt="KMCS썸네일">
-        </a>
-        <a href="html/sub2.html">
-
-          <div class="box2_left">
-            <p>KMCS</p>
-          </div>
-
-          <div class="box2_center">
-            <p>#Website</p>
-            <p>#Brand</p>
-            <p>#Subpage</p>
-          </div>
-
-          <div class="box2_right">
-            <p>2026</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- 폴로 -->
-      <div class="box3">
-        <a href="html/sub3.html" class="img-box Pole_img">
-          <img src="image_sub/Pole-img.png" alt="Pole썸네일">
-        </a>
-        <a href="html/sub3.html">
-
-          <div class="box3_left">
-            <p>폴로</p>
-          </div>
-
-          <div class="box3_center">
-            <p>#Website</p>
-            <p>#Redesign</p>
-            <p>#반응형</p>
-          </div>
-
-          <div class="box3_right">
-            <p>2025</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- 오리온 -->
-      <div class="box4">
-        <a href="html/sub4.html" class="img-box Orion_img">
-          <img src="image_sub/Orion-img.png" alt="Orion썸네일">
-        </a>
-
-        <a href="html/sub4.html">
-
-          <div class="box4_left">
-            <p>오리온</p>
-          </div>
-
-          <div class="box4_center">
-            <p>#Website</p>
-            <p>#Redesign</p>
-            <p>#반응형</p>
-          </div>
-
-          <div class="box4_right">
-            <p>2025</p>
-          </div>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- page5/footer -->
-  <footer class="page5">
-    <div class="page5-img-wrapper">
-      <img src="image/page5.png" alt="page5.pngs">
-    </div>
-
-    <div class="contact">
-      <p>Contact.</p>
-    </div>
-
-    <div class="text-group5">
-      <div class="text-kr5" data-aos="fade-up" data-aos-duration="2000">
-        <p>콘텐츠와 구조를 통해 사용자 경험을 설계하는 디자이너, 이준화입니다.</p>
-      </div>
-      <div class="text-en5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
-        <p>Designing user experiences through content and structure — JunHwa Lee.</p>
-      </div>
-    </div>
-    <div class="icon-group">
-      <a href="https://github.com/eeljun00" target="_blank" class="icon-g">
-        <img src="./image/icon_github.png" alt="아이콘 깃허브 이미지" />
-      </a>
-      <a href="https://www.notion.so/1f24daa3b0fb80769170cc9d5913c0cb" target="_blank" class="icon-n">
-        <img src="./image/icon_notion.png" alt="아이콘 노션 이미지" />
-      </a>
-      <a href="https://eeeljun.tistory.com/" target="_blank" class="icon-t">
-        <img src="./image/icon_tistory.png" alt="아이콘 티스토리 이미지" />
-      </a>
-    </div>
-    </div>
-  </footer>
-</body>
-
+      </footer>
+    </main>
+  </body>
 </html>
