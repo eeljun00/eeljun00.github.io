@@ -560,6 +560,7 @@ if (!reducedMotion.matches) {
 }
 const perspectiveCopy=perspectiveSection.querySelector(".perspective-copy");
 perspectiveCopy.classList.add("scroll-copy-fade");
+let perspectiveCopyRise=10;
 function updateSectionFades() {
   if (reducedMotion.matches) return;
   const width=storyStage.clientWidth, height=window.innerHeight;
@@ -570,9 +571,14 @@ function updateSectionFades() {
       // Fade the lower page's type while its green background travels in.
       const entrance=Number(story.dataset.perspective || 0);
       const p=clamp((entrance-.35)/.65,0,1);
-      const eased=p*p*(3-2*p);
+      // Short viewports must not finish fading while the right column is
+      // still below the screen. Remove the previous rise from this reading.
+      const copyTop=perspectiveCopy.getBoundingClientRect().top-perspectiveCopyRise;
+      const visible=clamp((height-copyTop)/Math.min(180,height*.22),0,1);
+      const eased=p*p*(3-2*p)*visible*visible*(3-2*visible);
+      perspectiveCopyRise=(1-eased)*10;
       perspectiveCopy.style.setProperty("--scroll-copy-opacity",eased.toFixed(4));
-      perspectiveCopy.style.setProperty("--scroll-copy-rise",`${(1-eased)*10}px`);
+      perspectiveCopy.style.setProperty("--scroll-copy-rise",`${perspectiveCopyRise}px`);
     }
     const outside=box.right<=0 || box.left>=width || box.bottom<=0 || box.top>=height;
     if(outside){
