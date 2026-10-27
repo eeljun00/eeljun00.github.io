@@ -31,10 +31,10 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/portfolio-hero.css" />
+    <link rel="stylesheet" href="css/portfolio-hero.css?v=20261027-profile-align" />
     <link rel="preload" as="image" href="image/paper-unfold-atlas.png" />
-    <script src="js/meadow-motion.js" defer></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/meadow-motion.js?v=20261027-meadow-edge-safe" defer></script>
+    <script src="js/script.js?v=20261027-about-fixed-frame" defer></script>
   </head>
   <body>
     <svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none">
@@ -168,6 +168,12 @@
             /></span>
           </div>
           <p class="name"><span class="maker-prefix">by.</span> <span>JUNHWA LEE</span></p>
+          <div class="hero-scroll-hint" aria-hidden="true">
+            <span class="hero-scroll-cue">
+              <span class="hero-scroll-mouse"><span class="hero-scroll-dot"></span></span>
+              <span class="hero-scroll-label">Scroll</span>
+            </span>
+          </div>
         </div>
       </section>
       <div class="cover-scroll-space" aria-hidden="true"></div>
@@ -186,7 +192,7 @@
                         </h3>
                         <p class="direction-english reveal-item">DESIGNING THE WAY THROUGH.</p>
                         <p class="editorial-body reveal-item">
-                          <span class="copy-line">흩어진 정보와 콘텐츠를 정리하고 연결해,</span><span class="copy-line">사용자가 쉽게 이해하고 행동할 수 있는 경험을 설계합니다.</span>
+                          <span class="copy-line">흩어진 정보와 콘텐츠를 정리하고 연결해,</span><span class="copy-line"><span class="direction-marker">사용자가 쉽게 이해하고 행동할 수 있는 경험을 설계</span>합니다.</span>
                         </p>
                       </div>
                     </div>
@@ -197,7 +203,7 @@
                     <div class="editorial-grid">
                       <h2 class="section-label reveal-item" id="perspective-label">Perspective.</h2>
                       <div class="editorial-copy perspective-copy">
-                        <h3 class="perspective-lead reveal-item">다양한 사람의 관점에서,<br /><strong>문제를 바라보는 법</strong>을 배웠습니다.</h3>
+                        <h3 class="perspective-lead reveal-item"><span class="copy-line">다양한 사람의 관점에서,</span><span class="copy-line"><strong>문제를 바라보는 법</strong>을 배웠습니다.</span></h3>
                         <p class="editorial-body reveal-item">
                           <span class="copy-line">문화·콘텐츠 기획과 제작, 국제행사 운영을 경험하며</span><span class="copy-line">다양한 사람과 협업하고 정보를 조율해왔습니다.</span>
                         </p>
@@ -297,12 +303,15 @@
                         <section class="resume-section resume-tool" aria-labelledby="resume-tool">
                           <h3 id="resume-tool">Tool</h3>
                           <ul class="resume-tools">
+                            <li><span class="tool-logo" role="img" aria-label="Figma" style="--tool-index: 3"></span></li>
                             <li><span class="tool-logo" role="img" aria-label="Photoshop" style="--tool-index: 0"></span></li>
                             <li><span class="tool-logo" role="img" aria-label="Illustrator" style="--tool-index: 1"></span></li>
                             <li><span class="tool-logo" role="img" aria-label="Premiere Pro" style="--tool-index: 2"></span></li>
-                            <li><span class="tool-logo" role="img" aria-label="Figma" style="--tool-index: 3"></span></li>
                             <li><span class="tool-logo" role="img" aria-label="HTML" style="--tool-index: 4"></span></li>
                             <li><span class="tool-logo" role="img" aria-label="CSS" style="--tool-index: 5"></span></li>
+                            <li><img class="tool-logo tool-logo-framed" src="image/tool-github.svg" alt="GitHub" title="GitHub" width="30" height="30" loading="lazy" decoding="async" /></li>
+                            <li><img class="tool-logo tool-logo-ai" src="image/tool-chatgpt.svg" alt="ChatGPT" title="ChatGPT" width="30" height="30" loading="lazy" decoding="async" /></li>
+                            <li><img class="tool-logo tool-logo-ai" src="image/tool-gemini.svg" alt="Gemini" title="Gemini" width="30" height="30" loading="lazy" decoding="async" /></li>
                             <li><span class="tool-logo" role="img" aria-label="Notion" style="--tool-index: 6"></span></li>
                           </ul>
                         </section>
@@ -384,18 +393,6 @@
               <div class="panel-body">
                 <h2 class="Project section-label reveal-item" id="project-label">Project.</h2>
                 <div class="box_group">
-                  <div class="project-row box1">
-                    <a href="html/sub1.html" class="project-link">
-                      <span class="project-name">Loopyit</span>
-                      <span class="project-details">Web UX/UI · Branding · Publishing</span>
-                    </a>
-                    <span class="project-preview">
-                      <a href="html/sub1.html" class="img-box Loopyit_img" tabindex="-1" aria-label="Loopyit 프로젝트 열기">
-                        <img src="image_sub/Loopyit-img.png" alt="Loopyit 프로젝트 미리보기" />
-                      </a>
-                    </span>
-                  </div>
-
                   <div class="project-row box5">
                     <a
                       href="https://eeljun00.github.io/Dango_Process/"
@@ -403,7 +400,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <span class="project-name">Dango(댕고)</span>
+                      <span class="project-name">Dango | 댕고</span>
                       <span class="project-details">App UX/UI · UX Research · Prototyping</span>
                     </a>
                     <span class="project-preview">
@@ -413,28 +410,40 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         tabindex="-1"
-                        aria-label="Dango(댕고) 프로젝트 열기"
+                        aria-label="Dango | 댕고 프로젝트 열기"
                       >
-                        <img src="image_sub/Dango-img.png" alt="Dango(댕고) 프로젝트 미리보기" />
+                        <img src="image_sub/Dango-img.png" alt="Dango | 댕고 프로젝트 미리보기" />
+                      </a>
+                    </span>
+                  </div>
+
+                  <div class="project-row box1">
+                    <a href="html/sub1.html" class="project-link">
+                      <span class="project-name">Loopyit | 루피잇</span>
+                      <span class="project-details">Web UX/UI · Branding · Publishing</span>
+                    </a>
+                    <span class="project-preview">
+                      <a href="html/sub1.html" class="img-box Loopyit_img" tabindex="-1" aria-label="Loopyit 프로젝트 열기">
+                        <img src="image_sub/Loopyit-img.png" alt="Loopyit 프로젝트 미리보기" />
                       </a>
                     </span>
                   </div>
 
                   <div class="project-row box2">
                     <a href="html/sub2.html" class="project-link">
-                      <span class="project-name">KCMS</span>
+                      <span class="project-name">KMCS | 대한산악보전회</span>
                       <span class="project-details">Web UX/UI · IA · Responsive</span>
                     </a>
                     <span class="project-preview">
-                      <a href="html/sub2.html" class="img-box KMCS_img" tabindex="-1" aria-label="KCMS 프로젝트 열기">
-                        <img src="image_sub/KMCS-img.png" alt="KCMS 프로젝트 미리보기" />
+                      <a href="html/sub2.html" class="img-box KMCS_img" tabindex="-1" aria-label="KMCS 프로젝트 열기">
+                        <img src="image_sub/KMCS-img.png" alt="KMCS 프로젝트 미리보기" />
                       </a>
                     </span>
                   </div>
 
                   <div class="project-row box4">
                     <a href="html/sub4.html" class="project-link">
-                      <span class="project-name">오리온</span>
+                      <span class="project-name">Orion | 오리온</span>
                       <span class="project-details">Web UI · Visual Design · Responsive</span>
                     </a>
                     <span class="project-preview">
@@ -446,7 +455,7 @@
 
                   <div class="project-row box3">
                     <a href="html/sub3.html" class="project-link">
-                      <span class="project-name">폴로</span>
+                      <span class="project-name">Polo | 폴로</span>
                       <span class="project-details">Brand Experience · Interaction · Responsive</span>
                     </a>
                     <span class="project-preview">
@@ -467,7 +476,7 @@
         <div class="panel-body footer-content">
           <div class="text-group5 reveal-item">
             <p>다음 경험으로 나아갈 준비가 되었습니다.</p>
-            <p>사람과 정보를 연결하며 쌓아온 경험을 바탕으로, <strong>새로운 길</strong>을 만들겠습니다.</p>
+            <p>사람과 정보를 연결하며 쌓아온 <br class="footer-mobile-break" />경험을 바탕으로, <br class="footer-mobile-break" /><strong>새로운 길</strong>을 만들겠습니다.</p>
           </div>
           <p class="footer-credit">
             <span class="footer-credit-text"><span class="maker-prefix">by.</span> <span>JUNHWA LEE</span></span>

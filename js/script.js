@@ -168,6 +168,8 @@ const storyStage = story.querySelector(".story-stage");
 const storyTrack = story.querySelector(".story-track");
 const storyPanels = [...story.querySelectorAll(".story-panel")];
 const perspectiveSection = document.querySelector("#perspective");
+const directionSection = document.querySelector("#direction");
+const aboutSection = document.querySelector("#about");
 let storyStops = [];
 let storyTotal = 0;
 let storyWidth = 0;
@@ -176,6 +178,8 @@ const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
 let coverRunway=0;
 let coverAnimationDistance=0;
 let coverReadingHold=0;
+let introProgress={direction:0,mark:0,perspective:0};
+let aboutProgress={title:0,profile:0,resume:0};
 
 // Direction stays above Perspective. Only the lower green section enters from
 // the right; the assembled introduction, About and Project then push to the left.
@@ -189,9 +193,24 @@ function measureStory() {
   let cursor = 0;
   storyStops = storyPanels.map((panel, index) => {
     const body = panel.querySelector(".panel-body");
-    const extra = Math.max(0, body.scrollHeight - height);
+    const fixedAbout=panel.id==="about" && storyWidth>1100 && !reducedMotion.matches;
+    panel.classList.toggle("is-fixed-about",fixedAbout);
+    const extra = fixedAbout ? 0 : Math.max(0, body.scrollHeight - height);
     const entrance = index === 0 ? Math.max(height * .65, storyWidth * .4) : 0;
-    const stop = { start:cursor, extra, entrance, hold:readingHold, end:cursor + extra + readingHold + entrance, crossing:index < storyPanels.length - 1 ? crossing : 0 };
+    const directionRead=index===0 ? height*.65 : 0;
+    const mark=index===0 ? height*.45 : 0;
+    const markHold=index===0 ? height*.15 : 0;
+    const perspectiveRead=index===0 ? height*1.1 : 0;
+    const entranceStart=readingHold+directionRead+mark+markHold;
+    const entranceEnd=entranceStart+entrance;
+    const readDistance=index===0 ? Math.max(extra,perspectiveRead) : extra;
+    const about=panel.id==="about" ? {
+      title:height*.38, profileStart:height*.5, profile:height*.55,
+      resumeStart:height*1.2, resume:height*.65, hold:height*.18,
+    } : null;
+    if(about) about.readStart=about.resumeStart+about.resume+height*.12;
+    const duration=about ? about.readStart+extra+about.hold : entranceEnd+readDistance;
+    const stop = { start:cursor, extra, entrance, hold:readingHold, directionRead, mark, entranceStart, entranceEnd, perspectiveRead, about, end:cursor+duration, crossing:index < storyPanels.length - 1 ? crossing : 0 };
     cursor = stop.end + stop.crossing;
     return stop;
   });
@@ -202,6 +221,8 @@ function measureStory() {
 
 function updateStory() {
   if (reducedMotion.matches) {
+    introProgress={direction:1,mark:1,perspective:1};
+    aboutProgress={title:1,profile:1,resume:1};
     storyTrack.style.removeProperty("--story-x");
     perspectiveSection.style.removeProperty("--perspective-x");
     storyPanels.forEach(panel => { panel.removeAttribute("inert"); panel.style.removeProperty("--panel-y"); panel.style.removeProperty("--panel-x"); panel.classList.remove("is-in-scene"); panel.classList.add("is-current"); });
@@ -217,12 +238,35 @@ function updateStory() {
     }
     let lift = clamp(time - stop.start - stop.hold / 2, 0, stop.extra);
     if (index === 0) {
+      const local=time-stop.start;
       const preLift = Math.min(stop.extra, storyStage.clientHeight * .08);
-      lift = clamp((time-stop.start)/stop.hold,0,1)*preLift + clamp(time-stop.start-stop.hold-stop.entrance,0,stop.extra-preLift);
-      const p = clamp((time-stop.start-stop.hold)/stop.entrance,0,1);
+      lift = clamp((local-stop.entranceStart)/stop.entrance,0,1)*preLift + clamp(local-stop.entranceEnd,0,stop.extra-preLift);
+      const p = clamp((local-stop.entranceStart)/stop.entrance,0,1);
       const progress = p*p*(3-2*p);
       perspectiveSection.style.setProperty("--perspective-x",`${(1-progress)*storyWidth}px`);
       story.dataset.perspective = progress.toFixed(4);
+      introProgress={
+        direction:clamp((local-stop.hold*.25)/stop.directionRead,0,1),
+        mark:clamp((local-stop.hold-stop.directionRead)/stop.mark,0,1),
+        perspective:clamp((local-stop.entranceEnd)/stop.perspectiveRead,0,1),
+      };
+      story.dataset.directionRead=introProgress.direction.toFixed(4);
+      story.dataset.directionMark=introProgress.mark.toFixed(4);
+      story.dataset.perspectiveRead=introProgress.perspective.toFixed(4);
+    }
+    if(stop.about){
+      const local=time-stop.start, phase=stop.about;
+      // Keep the composition fixed through the entire resume fade. Only then
+      // scroll the long content upward, before the next horizontal page change.
+      lift=clamp(local-phase.readStart,0,stop.extra);
+      aboutProgress={
+        title:clamp(local/phase.title,0,1),
+        profile:clamp((local-phase.profileStart)/phase.profile,0,1),
+        resume:clamp((local-phase.resumeStart)/phase.resume,0,1),
+      };
+      story.dataset.aboutTitle=aboutProgress.title.toFixed(4);
+      story.dataset.aboutProfile=aboutProgress.profile.toFixed(4);
+      story.dataset.aboutResume=aboutProgress.resume.toFixed(4);
     }
     storyPanels[index].style.setProperty("--panel-y", `${-lift}px`);
   });
@@ -377,6 +421,7 @@ function captureCoverAnimations() {
 }
 function updateCoverSequence() {
   const progress=reducedMotion.matches ? 1 : clamp(window.scrollY/Math.max(1,coverAnimationDistance),0,1);
+  hero.classList.toggle("is-cover-scroll-complete",window.scrollY>12 && progress>=1);
   const time=progress*coverDuration;
   coverAnimations.forEach(animation=>{animation.currentTime=time*1000;});
   heroSymbols.forEach(symbol=>{
@@ -518,22 +563,33 @@ scheduleScene();
 const storySizeObserver = new ResizeObserver(() => { measureStory(); scheduleScene(); });
 storyPanels.forEach(panel => storySizeObserver.observe(panel.querySelector(".panel-body")));
 // One visual language for selected copy: a small fade and rise, once.
-// Small staggered rises share the same motion language throughout the copy.
-if (!reducedMotion.matches) {
-  document.querySelectorAll("#direction-label,#perspective-label,#about-label,#project-label").forEach(label=>{
-    const text=label.textContent;
-    label.setAttribute("aria-label",text);
-    label.textContent="";
-    [...text].forEach((char,index)=>{
-      const span=document.createElement("span");
-      span.className="copy-char";
-      span.setAttribute("aria-hidden","true");
-      span.style.setProperty("--char-index",index);
-      span.textContent=char;
-      label.append(span);
-    });
+// Section titles fade as a whole, independently of the scroll-staged body copy.
+const sectionTitles=[...document.querySelectorAll("#direction-label,#perspective-label,#project-label")];
+const titleStates=new Map(sectionTitles.map(title=>[title,{section:title.closest(".editorial-section,.story-panel"),started:null,ready:false}]));
+sectionTitles.forEach(title=>title.classList.add("section-title-fade"));
+function titleReady(section){return titleStates.get(section.querySelector(".section-label"))?.ready || reducedMotion.matches;}
+function updateSectionTitles() {
+  const width=storyStage.clientWidth, height=window.innerHeight;
+  sectionTitles.forEach(title=>{
+    const state=titleStates.get(title), section=state.section;
+    const box=section.getBoundingClientRect();
+    const titleBox=title.getBoundingClientRect();
+    const outside=box.right<=0 || box.left>=width || box.bottom<=0 || box.top>=height;
+    if(outside) {
+      title.classList.remove("is-title-visible");state.started=null;state.ready=false;
+      section.dataset.titleReady='false';return;
+    }
+    if(state.started===null && Math.abs(box.left)<=width*.2 && titleBox.top<height*.86 && titleBox.bottom>0){
+      title.classList.add("is-title-visible");state.started=performance.now();
+    }
+    if(state.started!==null){
+      state.ready=performance.now()-state.started>=1180;
+      section.dataset.titleReady=String(state.ready);
+      if(!state.ready) scheduleScene();
+    }
   });
 }
+
 document.querySelectorAll(".editorial-copy").forEach(copy=>{
   [...copy.querySelectorAll(".reveal-item")].forEach((item,index)=>item.style.setProperty("--copy-delay",`${index*.1}s`));
 });
@@ -544,7 +600,9 @@ projectRows.forEach((row,index)=>{
     copy.style.setProperty("--copy-delay",`${index*.07+column*.04}s`);
   });
 });
-const revealItems=[...document.querySelectorAll(".reveal-item")];
+const projectCopyItems=[...projectSection.querySelectorAll(".project-name,.project-details")];
+if(!reducedMotion.matches) projectCopyItems.forEach(item=>item.classList.add("reveal-ready"));
+const revealItems=[...document.querySelectorAll(".reveal-item")].filter(item=>!item.matches(".section-label") && !item.closest("#direction .editorial-copy,#perspective .editorial-copy,#about,.project-row"));
 if (!reducedMotion.matches && "IntersectionObserver" in window) {
   revealItems.forEach(item=>item.classList.add("reveal-ready"));
   const copyObserver=new IntersectionObserver(entries=>{
@@ -557,47 +615,61 @@ if (!reducedMotion.matches && "IntersectionObserver" in window) {
 
 // Start the shared fade after the incoming page settles, rather than while
 // it is still mostly outside the viewport. Re-arm only after it fully leaves.
-const fadeSections=[...document.querySelectorAll("#direction,#perspective,#about")];
-const aboutFadeItems=[
-  ["#about-label",0], [".about-profile",.08],
-  [".resume-career",.16], [".resume-education",.16],
-  [".resume-experiences",.28], [".resume-awards",.28],
-  [".resume-certificate",.4], [".resume-tool",.4],
-].map(([selector,delay])=>{
+const fadeSections=[...document.querySelectorAll("#direction,#perspective")];
+const aboutFadeItems=[".about-profile",".about-resume"].map(selector=>{
   const item=document.querySelector(`#about ${selector}`);
   item.classList.add("about-fade-item");
-  item.style.setProperty("--about-delay",`${delay}s`);
   return item;
 });
-if (!reducedMotion.matches) {
-  fadeSections.filter(section=>section.id!=="perspective").forEach(section=>section.querySelector(".panel-body").classList.add("section-fade-ready"));
+const aboutTitle=aboutSection.querySelector(".section-label");
+aboutTitle.classList.add("about-scroll-title");
+function updateAboutReveal(){
+  const ease=progress=>progress*progress*(3-2*progress);
+  aboutTitle.style.setProperty("--about-title-opacity",ease(aboutProgress.title).toFixed(4));
+  aboutFadeItems.forEach((item,index)=>{
+    const progress=ease(aboutProgress[index===0 ? "profile" : "resume"]);
+    item.style.setProperty("--about-copy-opacity",progress.toFixed(4));
+    item.style.setProperty("--about-copy-rise",`${(1-progress)*8}px`);
+  });
 }
-const perspectiveCopy=perspectiveSection.querySelector(".perspective-copy");
-perspectiveCopy.classList.add("scroll-copy-fade");
-let perspectiveCopyRise=10;
+const storyCopyStages=[
+  ["#direction .direction-heading > span,#direction .direction-english,#direction .editorial-body","direction"],
+  ["#perspective .perspective-lead > .copy-line,#perspective .editorial-body","perspective"],
+].map(([selector,phase])=>({phase,items:[...document.querySelectorAll(selector)].map(element=>{
+  element.classList.add("scroll-story-copy");
+  return {element,rise:14};
+})}));
+function updateStoryCopy() {
+  storyCopyStages.forEach(({phase,items})=>{
+    const section=document.getElementById(phase);
+    const ready=titleReady(section);
+    const step=1/(items.length+.5);
+    items.forEach((item,index)=>{
+      const top=item.element.getBoundingClientRect().top-item.rise;
+      const visible=clamp((window.innerHeight-top-window.innerHeight*.06)/Math.min(140,window.innerHeight*.18),0,1);
+      const progress=ready ? clamp((introProgress[phase]-index*step)/(step*1.5),0,1)*visible : 0;
+      const eased=progress*progress*(3-2*progress);
+      item.rise=(1-eased)*14;
+      item.element.style.setProperty("--story-copy-opacity",eased.toFixed(4));
+      item.element.style.setProperty("--story-copy-rise",`${item.rise}px`);
+    });
+  });
+  directionSection.style.setProperty("--direction-mark",introProgress.mark.toFixed(4));
+}
 function updateSectionFades() {
   if (reducedMotion.matches) return;
+  updateSectionTitles();
+  updateStoryCopy();
+  updateAboutReveal();
+  const projectsReady=titleReady(projectSection);
+  projectCopyItems.forEach(item=>item.classList.toggle("is-revealed",projectsReady));
   const width=storyStage.clientWidth, height=window.innerHeight;
   fadeSections.forEach(section=>{
     const body=section.querySelector(".panel-body");
     const box=section.getBoundingClientRect();
-    if(section.id==="perspective") {
-      // Fade the lower page's type while its green background travels in.
-      const entrance=Number(story.dataset.perspective || 0);
-      const p=clamp((entrance-.35)/.65,0,1);
-      // Short viewports must not finish fading while the right column is
-      // still below the screen. Remove the previous rise from this reading.
-      const copyTop=perspectiveCopy.getBoundingClientRect().top-perspectiveCopyRise;
-      const visible=clamp((height-copyTop)/Math.min(180,height*.22),0,1);
-      const eased=p*p*(3-2*p)*visible*visible*(3-2*visible);
-      perspectiveCopyRise=(1-eased)*10;
-      perspectiveCopy.style.setProperty("--scroll-copy-opacity",eased.toFixed(4));
-      perspectiveCopy.style.setProperty("--scroll-copy-rise",`${perspectiveCopyRise}px`);
-    }
     const outside=box.right<=0 || box.left>=width || box.bottom<=0 || box.top>=height;
     if(outside){
       body.classList.remove("is-section-visible");
-      if(section.id==="about") aboutFadeItems.forEach(item=>item.classList.remove("is-about-item-visible"));
       return;
     }
     const visibleHeight=Math.max(0,Math.min(height,box.bottom)-Math.max(0,box.top));
@@ -606,13 +678,6 @@ function updateSectionFades() {
       ? box.top<=height*.25 && visibleHeight>=Math.min(box.height,height)*.55
       : settled && visibleHeight>=Math.min(box.height,height)*.3;
     if(entering) body.classList.add("is-section-visible");
-    if(section.id==="about" && body.classList.contains("is-section-visible")) {
-      aboutFadeItems.forEach(item=>{
-        const itemBox=item.getBoundingClientRect();
-        const inView=Math.max(0,Math.min(height,itemBox.bottom)-Math.max(0,itemBox.top));
-        if(inView>=Math.min(itemBox.height,height)*.15) item.classList.add("is-about-item-visible");
-      });
-    }
   });
 }
 
@@ -632,7 +697,7 @@ function resetPointerEffects() {
   footer.classList.toggle("motion-ready", !reducedMotion.matches);
   captureCoverAnimations();
   if (reducedMotion.matches) {
-    revealItems.forEach(item=>item.classList.add("is-revealed"));
+    [...revealItems,...projectCopyItems].forEach(item=>item.classList.add("is-revealed"));
     fadeSections.forEach(section=>section.querySelector(".panel-body").classList.add("is-section-visible"));
   }
   lastHeroProgress = -1;
@@ -681,7 +746,7 @@ function footerSceneTarget(scene) {
     const body = storyPanels[0].querySelector(".panel-body");
     const naturalTop = perspectiveSection.getBoundingClientRect().top - body.getBoundingClientRect().top;
     const lift = clamp(naturalTop - 24, preLift, stop.extra);
-    return base + stop.hold + stop.entrance + Math.max(0, lift - preLift);
+    return base + stop.entranceEnd + Math.max(stop.perspectiveRead, lift - preLift);
   }
   return base;
 }
