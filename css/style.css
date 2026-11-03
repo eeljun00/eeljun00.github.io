@@ -20,12 +20,6 @@
   font-display: swap;
 }
 
-.abril-fatface-regular {
-  font-family: "Abril Fatface", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -48,10 +42,6 @@ body {
   --story-ink: #65676b;
 }
 
-.bold {
-  font-weight: 600;
-}
-
 header {
   width: 100%;
   height: 70px;
@@ -61,65 +51,6 @@ header {
   z-index: 1000;
 
   transition: transform 1s;
-}
-
-/* LIQUID GLASS STYLES */
-.liquidGlass-wrapper {
-  position: relative;
-  display: flex;
-  font-weight: 600;
-  overflow: hidden;
-
-  box-shadow:
-    0 6px 6px rgba(104, 104, 104, 0.2),
-    0 0 20px rgba(104, 104, 104, 0.1);
-
-  transition: all 0.4s;
-
-  height: 70px;
-  display: flex;
-  align-items: center;
-  margin: 0 30px;
-  padding: 0 30px;
-  box-sizing: border-box;
-  border-radius: 40px;
-}
-
-.liquidGlass-effect {
-  position: absolute;
-  width: 100%;
-  z-index: 0;
-  inset: 0;
-
-  backdrop-filter: blur(3px);
-  filter: url(#glass-distortion);
-  overflow: hidden;
-}
-
-.liquidGlass-tint {
-  z-index: 1;
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.liquidGlass-shine {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-
-  overflow: hidden;
-
-  box-shadow:
-    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2),
-    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);
-}
-
-.liquidGlass-text {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  z-index: 3;
 }
 
 /* 숨김 상태 */
@@ -262,23 +193,7 @@ header.header-on-light .year {
   line-height: 1.7;
   letter-spacing: -0.03em;
 }
-[data-reveal] {
-  overflow: hidden;
-}
-.reveal-line,
-.reveal-content {
-  display: block;
-}
-.reveal-content {
-  transition:
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.65s ease;
-  transition-delay: var(--reveal-delay, 0ms);
-}
-.editorial-section.motion-ready:not(.is-revealed) .reveal-content {
-  opacity: 0;
-  transform: translateY(110%) rotate(2deg);
-}
+
 @media (max-width: 700px) {
   .editorial-section {
     padding: 100px 24px 64px;
@@ -318,13 +233,6 @@ header.header-on-light .year {
   background: #fff;
 }
 
-.page4 .Project p {
-  font-size: 64px;
-  font-family: "Abril Fatface", serif;
-  color: #6fa3ff;
-  padding: 50px 0px 100px 0px;
-}
-
 .box_group {
   display: flex;
   flex-direction: column;
@@ -334,7 +242,7 @@ header.header-on-light .year {
 .project-row {
   position: relative;
   --project-color: #333;
-  --preview-x: 0px;
+
   --preview-y: 0px;
   color: #333;
   transition: color 0.3s ease;
@@ -411,27 +319,27 @@ header.header-on-light .year {
 
 .box1 {
   --project-color: #00ff50;
-  --preview-x: -48px;
+
   --preview-y: 0px;
 }
 .box2 {
   --project-color: #588157;
-  --preview-x: 0px;
+
   --preview-y: 10px;
 }
 .box3 {
   --project-color: #ffc107;
-  --preview-x: 48px;
+
   --preview-y: -8px;
 }
 .box4 {
   --project-color: #e3051b;
-  --preview-x: -24px;
+
   --preview-y: -12px;
 }
 .box5 {
   --project-color: #ff6f6f;
-  --preview-x: 32px;
+
   --preview-y: 6px;
 }
 
@@ -572,20 +480,6 @@ header.header-on-light .year {
   background-color: #111;
 }
 
-.page5 .contact p {
-  font-size: 64px;
-  font-family: "Abril Fatface", serif;
-  color: #fff;
-  padding: 0 0 30px;
-}
-
-.page5 > .contact,
-.page5 > .text-group5,
-.page5 > .icon-group {
-  position: relative;
-  z-index: 1;
-}
-
 .page5 > .page5-img-wrapper {
   width: auto;
   height: 100%;
@@ -611,73 +505,13 @@ header.header-on-light .year {
   transform: translateY(clamp(260px, 48vh, 520px)) rotate(-12deg) scale(0.86);
 }
 
-/* 배경 + 타이틀 */
-.page5 > .text-group5 {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  text-align: center;
-  gap: 18px;
-  margin-bottom: 50px;
-}
-
-.page5 > .text-group5 div p {
-  font-size: 24px;
-  line-height: 1.5;
-  word-break: keep-all;
-}
-
 .page5 .text-highlight {
   color: #83aff2;
   white-space: nowrap;
 }
 
-.page5 > .icon-group {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 0;
-}
-
-.page5 > .icon-group a {
-  display: grid;
-  place-items: center;
-  padding: 10px;
-  border-radius: 50%;
-  transition:
-    background-color 0.3s ease,
-    box-shadow 0.3s ease;
-}
-.page5 > .icon-group a img {
-  display: block;
-  transform: translate3d(var(--magnet-x, 0px), var(--magnet-y, 0px), 0) scale(var(--contact-scale, 1));
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.page5 > .icon-group a:hover,
-.page5 > .icon-group a:focus-visible {
-  background-color: rgba(131, 175, 242, 0.12);
-  box-shadow: 0 0 24px rgba(131, 175, 242, 0.18);
-}
-.page5 > .icon-group a:focus-visible {
-  outline: 2px solid #83aff2;
-  outline-offset: 4px;
-}
-
-.page5 > .icon-group a:hover,
-.page5 > .icon-group a:focus-visible {
-  --contact-scale: 1.08;
-}
-
 @media (max-width: 600px) {
-  .liquidGlass-wrapper {
-    margin: 0 16px;
-    padding: 0 20px;
-  }
+
   .category,
   .year {
     font-size: 18px;
@@ -686,19 +520,7 @@ header.header-on-light .year {
     height: auto;
     min-height: max(700px, 100svh);
   }
-  .page5 > .text-group5 div p {
-    font-size: 20px;
-  }
-  .page5 > .icon-group {
-    gap: 16px;
-  }
-  .page5 > .icon-group a {
-    padding: 8px;
-  }
-  .page5 > .icon-group a img {
-    width: clamp(48px, 14vw, 72px);
-    height: auto;
-  }
+
   .page5 > .page5-img-wrapper img {
     position: absolute;
     right: -80px;
@@ -717,33 +539,19 @@ header.header-on-light .year {
     transform: none;
     transition: none;
   }
-  .editorial-section.motion-ready .reveal-content {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+
   .direction-way::after {
     transition: none;
     transform: none !important;
   }
-  header .header-inner[data-aos],
-  .page1 [data-aos],
-  .page5 [data-aos] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
+
   .page5 > .page5-img-wrapper img,
   .page5.motion-ready:not(.is-visible) > .page5-img-wrapper img {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .page5 > .icon-group a,
-  .page5 > .icon-group a img {
-    transform: none;
-    transition: none;
-  }
+
   .project-preview {
     transition: none;
   }

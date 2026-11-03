@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="refresh" content="0;url=../Orion_Design/">
+    <title>오리온 디자인으로 이동</title>
+    <script>
+      const destination = new URL("../Orion_Design/", window.location.href);
+      destination.search = window.location.search;
+      destination.hash = window.location.hash;
+      window.location.replace(destination.href);
+    </script>
+  </head>
+  <body>
+    <p><a href="../Orion_Design/">오리온 디자인 사이트로 이동</a></p>
+  </body>
+</html>

@@ -157,9 +157,7 @@ window.addEventListener("scroll", function () {
 }, { passive: true });
 
 const hero = document.querySelector(".page1");
-const coverTransition = document.querySelector(".cover-transition");
 const footer = document.querySelector(".page5");
-const contactLinks = [...footer.querySelectorAll(".icon-group a")];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 const motionAllowed = () => !reducedMotion.matches && finePointer.matches;
@@ -615,7 +613,6 @@ if (!reducedMotion.matches && "IntersectionObserver" in window) {
 
 // Start the shared fade after the incoming page settles, rather than while
 // it is still mostly outside the viewport. Re-arm only after it fully leaves.
-const fadeSections=[...document.querySelectorAll("#direction,#perspective")];
 const aboutFadeItems=[".about-profile",".about-resume"].map(selector=>{
   const item=document.querySelector(`#about ${selector}`);
   item.classList.add("about-fade-item");
@@ -663,22 +660,7 @@ function updateSectionFades() {
   updateAboutReveal();
   const projectsReady=titleReady(projectSection);
   projectCopyItems.forEach(item=>item.classList.toggle("is-revealed",projectsReady));
-  const width=storyStage.clientWidth, height=window.innerHeight;
-  fadeSections.forEach(section=>{
-    const body=section.querySelector(".panel-body");
-    const box=section.getBoundingClientRect();
-    const outside=box.right<=0 || box.left>=width || box.bottom<=0 || box.top>=height;
-    if(outside){
-      body.classList.remove("is-section-visible");
-      return;
-    }
-    const visibleHeight=Math.max(0,Math.min(height,box.bottom)-Math.max(0,box.top));
-    const settled=Math.abs(box.left)<=width*.08;
-    const entering=section.id==="direction"
-      ? box.top<=height*.25 && visibleHeight>=Math.min(box.height,height)*.55
-      : settled && visibleHeight>=Math.min(box.height,height)*.3;
-    if(entering) body.classList.add("is-section-visible");
-  });
+
 }
 
 document.fonts?.ready.then(() => {
@@ -698,7 +680,7 @@ function resetPointerEffects() {
   captureCoverAnimations();
   if (reducedMotion.matches) {
     [...revealItems,...projectCopyItems].forEach(item=>item.classList.add("is-revealed"));
-    fadeSections.forEach(section=>section.querySelector(".panel-body").classList.add("is-section-visible"));
+
   }
   lastHeroProgress = -1;
   scheduleScene();
