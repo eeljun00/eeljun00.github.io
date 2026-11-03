@@ -1,0 +1,799 @@
+/* Compact chrome, reference-led hover states and four editable product scenes. */
+:root{--header-height:80px}
+.site-header{padding:0 5.2083vw;align-items:center;height:var(--header-height)}.site-brand{padding:0;height:auto}.site-brand>div{width:180px;height:auto;aspect-ratio:259/56}.site-header[data-theme=red]{background:rgba(255,255,255,.7);backdrop-filter:blur(14px)}.site-header[data-theme=light]{background:rgba(20,11,11,.1);backdrop-filter:blur(9px)}.site-header[data-theme=light] .site-brand img{filter:url('#orion-logo-white')!important}.header-tools{padding-block:0}
+.orion-emblem{position:absolute;inset:0;z-index:1;transform-origin:50% 50%}.orion-category:is(:hover,:focus-visible) .orion-emblem{animation:emblem-reveal .7s cubic-bezier(.2,.65,.3,1) both}.orion-category:is(:hover,:focus-visible) .orion-emblem .orion-ring,.orion-category:is(:hover,:focus-visible) .orion-emblem .orion-star{animation:none}.orion-product{z-index:3}
+@keyframes emblem-reveal{from{opacity:0;transform:rotate(-14deg) scale(.97)}to{opacity:1;transform:rotate(0) scale(1)}}
+.category-item{cursor:grab}.category-carousel.is-dragging *{cursor:grabbing}.story-photo img{transition:scale .8s cubic-bezier(.2,.65,.3,1)}.story-photo:hover img{scale:1.025}
+.brand-esg-scroll{position:relative;}.brand-esg-stage{width:100%}.brand-quote{width:100%;padding:0;background:#fff}.quote-stage{position:relative;inset:auto;}.brand-quote-text{font-size:clamp(24px,2.5vw,48px);line-height:1.5}.brand-esg-stage>.esg-section{width:100%}
+.esg-card{background:rgba(164,164,164,.3);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(13px);overflow:visible;transition:border-color .12s ease-out}.esg-card::before{content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;background:rgba(164,164,164,.5);opacity:0;pointer-events:none;transition:opacity .12s ease-out}.esg-card>div{z-index:1;opacity:.76;transition:opacity .12s ease-out}.esg-card .esg-circle{background:rgba(255,255,255,.52);border-radius:50%;transition:background-color .12s ease-out}
+@media(hover:hover){.esg-card:hover{border-color:rgba(255,255,255,.5)}.esg-card:hover::before{opacity:1}.esg-card:hover>div{opacity:1}.esg-card:hover .esg-circle{background:#fff}.esg-card:hover .esg-arrow{color:var(--red)}}
+.featured-section{height:56.25vw;min-height:680px;max-height:1080px;overflow:hidden;background:#8b1d9e;outline-offset:-8px}.product-scene{overflow:hidden;color:#fff;isolation:isolate}.scene-jelly{--scene-accent:#ffd90b}.product-atmosphere{position:absolute;inset:-5%;z-index:-1;pointer-events:none;animation:product-backdrop 12s ease-in-out infinite alternate;background:radial-gradient(ellipse at 70% 30%,#ffffff0a,transparent 65%)}.scene-jelly .product-atmosphere{background:radial-gradient(ellipse at 60% 50%,#a833b9aa,transparent 60%),linear-gradient(170deg,#901aa3,#6b0b77)}
+.featured-section:not(.is-visible) .product-atmosphere,.product-scene[aria-hidden=true] .product-atmosphere{animation-play-state:paused}
+.product-copy{position:absolute;left:11%;top:11%;z-index:5;width:45%;pointer-events:none}.product-eyebrow{font-size:clamp(14px,1.042vw,20px);font-weight:700;letter-spacing:.035em;color:var(--scene-accent);margin-bottom:14px}.product-copy h2{font-size:clamp(44px,4.583vw,88px);line-height:1.15;letter-spacing:-.04em;color:inherit}.product-description{font-size:clamp(16px,1.25vw,24px);line-height:1.7;margin-top:22px;color:inherit;word-break:keep-all}.product-art{position:absolute;inset:0;z-index:2;pointer-events:none}.asset-crop{position:absolute;overflow:hidden;pointer-events:none;user-select:none}.asset-crop img{position:absolute;max-width:none;height:auto;display:block}
+.jelly-logo{width:25%;left:11%;top:35%;rotate:-6deg;filter:drop-shadow(0 8px 8px #33003d33)}.jelly-pack{width:37%;left:37%;top:31%;filter:drop-shadow(0 25px 22px #26003838)}.jelly-pack img{clip-path:polygon(48.6% 21.6%,82.2% 25%,75.8% 71.3%,43.1% 67.5%,45.1% 57%,31.5% 65.5%,19.8% 42.6%,39.7% 34.7%,45.8% 46.3%)}.jelly-friend-left{width:10%;left:9%;bottom:12%;rotate:-12deg}.jelly-friend-small{width:9%;left:23%;bottom:9%;rotate:10deg}.jelly-king{width:18%;right:7%;bottom:12%;rotate:6deg}.jelly-caption{width:23%;right:6%;top:34%;rotate:6deg}
+
+
+
+.product-tabs{position:absolute;display:flex;z-index:10}.featured-pagination{position:absolute;left:50%;top:auto;translate:-50% 0;display:flex;align-items:center;justify-content:center;width:auto;}.featured-controls{inset:50% 3% auto}.featured-controls button{backdrop-filter:blur(4px)}
+.product-scene .asset-crop{animation:product-float 6s ease-in-out infinite alternate;animation-delay:var(--float-delay,0s)}.product-scene .asset-crop:nth-child(2n){--float-delay:-2s}.product-scene[aria-hidden=true] .asset-crop,.featured-section:not(.is-visible) .asset-crop{animation-play-state:paused}.product-copy>*{transition:opacity .45s,translate .65s}.featured-scene[aria-hidden=true] .product-copy>*{opacity:0;translate:0 16px}.featured-scene[aria-hidden=false] .product-copy>*{opacity:1;translate:0 0}
+@keyframes product-backdrop{from{transform:translate(-1%,-1%) scale(1.02)}to{transform:translate(1%,1%) scale(1.05)}}@keyframes product-float{from{translate:0 -5px}to{translate:0 6px}}
+/* Display the original packaging and food silhouettes, without poster rectangles. */
+
+
+.songi-pack img{top:-106.66667%!important}
+.news-section{height:auto;display:block;padding:clamp(65px,6.25vw,120px) 0 clamp(60px,5.2vw,100px)}.news-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;height:auto;padding:0 var(--gutter);gap:32px;overflow:visible}.news-title-group{height:auto;gap:16px;width:100%}.news-heading .more-button{position:static;align-self:center;margin:0}.news-track{height:auto;margin-top:50px;padding-block:10px 20px}.news-spacer,.news-controls{display:none}
+.social-card{position:relative;overflow:hidden;isolation:isolate}.social-card::before{content:'';position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.26);opacity:0;transition:opacity .3s;pointer-events:none;}.social-card:is(:hover,:focus-visible)::before,.social-card:is(:hover,:focus-visible)::after{opacity:1}.social-card>div:first-child>div:last-child{z-index:4}.social-card img{transition:filter .3s}.social-more{margin-top:calc(1568 * var(--u))}
+@media(max-width:1199px){:root{--header-height:76px}.site-header{padding:0 30px}.site-brand>div{width:150px}.product-copy{left:9%;top:12%;width:49%}.product-copy h2{font-size:58px}.product-eyebrow{font-size:14px}.product-description{font-size:17px}.product-tabs{right:8%;top:13%}.product-scene .product-copy h2{font-size:58px}.jelly-caption{top:38%}.news-heading .more-button{padding:11px 20px}}
+@media(max-width:767px){:root{--header-height:64px}.site-header{height:64px;padding:0 20px}.site-brand{height:auto}.site-brand>div{width:132px;height:auto;aspect-ratio:259/56}.brand-esg-scroll{height:calc(var(--brand-stage-height,1240px) + 480px)}.brand-quote{height:150px}.brand-quote-text{font-size:clamp(19px,4.7vw,28px);white-space:normal;text-wrap:balance}.esg-card{border-radius:18px}.featured-section{max-height:none}.product-copy{left:24px;top:45px;width:calc(100% - 48px)}.product-eyebrow{font-size:12px;margin-bottom:10px}.product-scene .product-copy h2{font-size:44px;line-height:1.15}.product-description{font-size:15px;margin-top:15px;line-height:1.65}.product-art{inset:260px 0 25px}.jelly-logo{width:40%;left:5%;top:6%}.jelly-pack{width:64%;left:25%;top:26%}.jelly-king{width:26%;right:2%;bottom:8%}.jelly-friend-left{width:15%;left:2%;bottom:14%}.jelly-friend-small{width:13%;left:16%;bottom:6%}.jelly-caption{width:38%;right:3%;top:5%}.news-section{padding:65px 0 55px}.news-heading{grid-template-columns:1fr;gap:20px;padding:0 24px}.news-heading .more-button{justify-self:start;margin:0}.news-track{margin-top:28px}.social-more{margin-top:10px}}
+@media(prefers-reduced-motion:reduce){.brand-esg-scroll{height:auto}.brand-quote{height:clamp(110px,9.6354vw,185px)}.quote-stage{height:100%;padding:24px;background:var(--red);color:white}.product-atmosphere,.product-scene .asset-crop,.orion-category:is(:hover,:focus-visible) .orion-emblem{animation:none}.product-copy>*{transition:none}}
+
+
+/* Transparent header; each hovered menu item reverses the section tone. */
+.site-header[data-theme]{box-shadow:none}
+.primary-nav button{color:var(--header-color);}
+.primary-nav button *{color:inherit;transition:color .25s}
+.primary-nav button::after{background:currentColor}
+.site-header[data-theme=light] .primary-nav button:is(:hover,:focus-visible){color:var(--red)}
+.site-header[data-theme=red] .primary-nav button:is(:hover,:focus-visible){color:white}
+
+/* Keep the generous CI canvas, moving only its central content upward. */
+
+/* The short band waits at the viewport centre before its colour changes. */
+.brand-quote-text{position:static;inset:auto;translate:none;width:auto;height:auto;color:inherit}
+.brand-esg-scroll,.brand-esg-stage{isolation:isolate}
+.esg-section{background:#29251e;isolation:isolate}
+.esg-background{z-index:-1}
+
+/* Animate solid colours, avoiding hue interpolation through blue filters. */
+.esg-card .esg-arrow{color:#b7b7b7}
+.esg-card .esg-arrow img{visibility:hidden}
+.site-footer [data-action=family] [data-name=arrow_right] img,.footer-brand-icon img{visibility:visible;transition:filter .25s}
+.site-footer [data-action=family]:is(:hover,:focus-visible,[aria-expanded=true]) [data-name=arrow_right] img{filter:brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(5470%) hue-rotate(342deg) brightness(92%) contrast(118%)}
+.social-link:is(:hover,:focus-visible){color:var(--red)}
+.social-link:is(:hover,:focus-visible) p{color:var(--red)}
+.social-link:is(:hover,:focus-visible) .social-brand-icon{background:var(--red);mask:var(--brand-icon) center/contain no-repeat}
+.social-link:is(:hover,:focus-visible) .social-brand-icon img{visibility:hidden}
+
+/* Ring sweep first; all stars enter together halfway through the sweep. */
+.orion-emblem{animation:none!important}
+.orion-stars,.orion-starfield{position:absolute;inset:0;width:100%;height:100%}
+.orion-stars{z-index:2;pointer-events:none}
+.orion-emblem .orion-ring{mask-image:conic-gradient(#000 var(--ring-sweep),transparent 0)}
+.orion-category:is(:hover,:focus-visible) .orion-emblem .orion-ring{animation:orion-ring-reveal .9s cubic-bezier(.2,.65,.3,1) both}
+.orion-category:is(:hover,:focus-visible) .orion-stars{animation:orion-stars-enter .35s .45s ease-out both}
+.orion-category:is(:hover,:focus-visible) .orion-emblem .orion-star{animation:none}
+@keyframes orion-stars-enter{from{opacity:0;scale:.9}to{opacity:1;scale:1}}
+
+/* Buttons fill from the left while preserving their original dimensions. */
+.hero-cta,.detail-hover.more-button,.detail-hover.red-button{color:var(--red);border:1px solid var(--red);background-color:white;background-image:linear-gradient(var(--red),var(--red));background-repeat:no-repeat;background-position:left center;background-size:0% 100%;box-shadow:none;transition:background-size .45s cubic-bezier(.2,.65,.3,1),color .25s}
+.hero-cta *,.detail-hover.more-button *,.detail-hover.red-button *{color:inherit}
+.hero-cta:is(:hover,:focus-visible),.detail-hover.more-button:is(:hover,:focus-visible),.detail-hover.red-button:is(:hover,:focus-visible){color:white;background-color:white;background-size:100% 100%;border-color:var(--red);box-shadow:none}
+.hero-cta:is(:hover,:focus-visible) *,.detail-hover.more-button:is(:hover,:focus-visible) *,.detail-hover.red-button:is(:hover,:focus-visible) *{color:inherit}
+.detail-hover.more-button img,.detail-hover.red-button img{transition:none}
+
+
+/* Jelly is unchanged. The other products use its title/logo/pack/caption layout. */
+
+/* Anchor the SNS action below the actual card columns, avoiding margin collapse. */
+.social-more{top:calc(1568 * var(--u));left:50%;translate:-50% 0;margin:0}
+
+@media(max-width:767px){
+  .ci-logo{margin:65px 0 10px}.ci-description{inset:auto}.ci-more{inset:auto}
+  .quote-stage{padding:0 18px}
+  
+  
+  
+  
+  
+  .social-more{position:relative;inset:auto;translate:none;margin:30px auto 0}
+}
+
+/* Fit the complete ESG composition below the fixed header on desktop. */
+@media(min-width:1200px) and (min-height:760px){
+  .esg-section{height:calc(100svh - var(--header-height));min-height:0;scroll-margin-top:var(--header-height)}
+  .esg-heading{height:auto;}
+  .esg-grid-wrap{height:auto;flex:1;align-items:center;padding-bottom:clamp(20px,4vh,45px)}
+  .esg-card{height:clamp(350px,43vh,440px)}
+}
+.social-heading [data-node-id='1:19759'] img{width:100%;height:100%;object-fit:contain;object-position:center}
+@media(prefers-reduced-motion:reduce){.brand-esg-stage{position:static}.orion-category:is(:hover,:focus-visible) .orion-stars{animation:none}.hero-cta,.detail-hover.more-button,.detail-hover.red-button{transition:none}}
+
+/* Cover and original button appearances. */
+.site-header[data-cover=true]{border:0;box-shadow:none}
+.site-header[data-cover=true] .primary-nav button:is(:hover,:focus-visible){color:white}
+.site-header[data-cover=true] .primary-nav button::after{background:white}
+.site-header .header-mall{width:max-content;min-width:130px;padding-inline:14px;white-space:nowrap;flex-shrink:0}
+.hero-cta:is(:hover,:focus-visible){background:var(--red);}
+.detail-hover.more-button,.detail-hover.red-button{border-color:var(--red);}
+.detail-hover.more-button:is(:hover,:focus-visible),.detail-hover.red-button:is(:hover,:focus-visible){background:var(--red);}
+.detail-hover.more-button:is(:hover,:focus-visible) *,.detail-hover.red-button:is(:hover,:focus-visible) *{color:white}
+@keyframes button-fill-red{from{background:white;box-shadow:inset 0 0 0 0 var(--red)}to{background:white;box-shadow:inset 300px 0 0 0 var(--red)}}
+.orion-product{transform-origin:50% 50%;transition:scale .65s cubic-bezier(.2,.65,.3,1)}
+.orion-category:is(:hover,:focus-visible) .orion-product{scale:1.1}
+.ci-logo{top:24%}
+.ci-description{top:59%}.ci-more{top:70%}
+.ci-more:is(:hover,:focus-visible) img,.social-more:is(:hover,:focus-visible) img{filter:brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(5470%) hue-rotate(342deg) brightness(92%) contrast(118%)}
+/* Restore the original jelly slide's badges and round page controls. */
+.featured-pagination button{border:1px solid transparent;border-radius:50%;transition:border-color .25s,background .25s}
+.featured-pagination button:is(:hover,:focus-visible){border-color:white;background:#ffffff30}
+@media(max-width:767px){.ci-logo{inset:auto}.ci-description,.ci-more{inset:auto}.product-tabs{left:50%;right:auto;translate:-50% 0}}
+@media(prefers-reduced-motion:reduce){.story-row{opacity:1!important;transform:none!important}.orion-product{transition:none}}
+
+/* Hover states and category side photographs. */
+.primary-nav button::after,.ci-more::after,.social-more::after{content:none!important}
+.site-header[data-theme] .primary-nav button:is(:hover,:focus-visible),.site-header[data-cover=true] .primary-nav button:is(:hover,:focus-visible){color:var(--red)}
+.site-header .header-tools>button:not(.header-mall):is(:hover,:focus-visible){opacity:1}
+.site-header[data-theme=light] .site-brand:is(:hover,:focus-visible) img{filter:none!important}
+.mobile-toggle:is(:hover,:focus-visible){color:var(--red)}
+
+.detail-hover.more-button:is(:hover,:focus-visible),.detail-hover.red-button:is(:hover,:focus-visible){background-position:center bottom;background-repeat:no-repeat;}
+@keyframes button-fill-bottom{from{background-size:100% 0%}to{background-size:100% 100%}}
+.orion-category:not([data-position=center]) .category-visual{border-radius:50%;overflow:hidden;background:url('assets/8b23d.png') center/cover no-repeat}
+.orion-category:not([data-position=center]) .orion-emblem,.orion-category:not([data-position=center]) .orion-product{visibility:hidden;animation:none!important}
+.footer-social>button:is(:hover,:focus-visible){background:transparent}
+
+/* Header tones and slower bottom-to-top fills. */
+.site-header[data-theme]{backdrop-filter:blur(10px)}
+.site-header[data-cover=true]{backdrop-filter:none}
+.site-header .header-mall:is(:hover,:focus-visible){background:var(--dr-you);color:white}
+
+
+.hero-cta:is(:hover,:focus-visible) *{color:white}
+.back-top{background-color:var(--red);background-image:linear-gradient(#aa0017,#aa0017);background-position:center bottom;background-repeat:no-repeat;background-size:100% 0%;}
+.social-more [data-name=arrow_right] img{visibility:hidden}
+/* The selected Dr.You and Market O photographs gain a clockwise ring on hover. */
+.category-item:not(.orion-category) .category-visual::after{content:'';position:absolute;inset:0;border:clamp(4px,.4vw,8px) solid var(--category-ring,var(--red));border-radius:50%;pointer-events:none;opacity:0;mask-image:conic-gradient(#000 var(--ring-sweep),transparent 0)}
+.category-item[data-category-index='0']{--category-ring:#019098}
+.category-item[data-category-index='2']{--category-ring:#61492f}
+.category-item:not(.orion-category)[data-position=center]:is(:hover,:focus-visible) .category-visual::after{opacity:1;animation:orion-ring-reveal .9s cubic-bezier(.2,.65,.3,1) both}
+@media(prefers-reduced-motion:reduce){.hero-cta,.back-top{transition:none}.detail-hover.more-button:is(:hover,:focus-visible),.detail-hover.red-button:is(:hover,:focus-visible){animation:none;background:var(--red)}.category-item:not(.orion-category)[data-position=center]:is(:hover,:focus-visible) .category-visual::after{animation:none;mask-image:none}}
+
+/* Buttons start white and fill upward only while hovered. */
+.hero-cta:is(:hover,:focus-visible){background-position:center bottom;}
+.detail-hover.more-button,.detail-hover.red-button{background:white linear-gradient(var(--red),var(--red)) no-repeat center bottom / 100% 0%;border:2px solid var(--red);color:var(--red);animation:none;box-shadow:none;transition:background-size .9s ease,color .25s}
+.detail-hover.more-button *,.detail-hover.red-button *{color:inherit!important}
+.detail-hover.more-button img,.detail-hover.red-button img{filter:brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(5470%) hue-rotate(342deg) brightness(92%) contrast(118%)}
+.detail-hover.more-button:is(:hover,:focus-visible),.detail-hover.red-button:is(:hover,:focus-visible){background-color:white;background-image:linear-gradient(var(--red),var(--red));background-size:100% 100%;color:white;animation:none;box-shadow:none}
+.detail-hover.more-button:is(:hover,:focus-visible) img,.detail-hover.red-button:is(:hover,:focus-visible) img{filter:brightness(0) invert(1)}
+.back-top{background:white linear-gradient(var(--red),var(--red)) no-repeat center bottom / 100% 0%;border:2px solid var(--red);border-radius:50%;color:var(--red);transition:background-size .9s ease,color .25s}
+.back-top [data-node-id='1:19809']{color:var(--red)}.back-top p{color:inherit}.back-top img{filter:brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(5470%) hue-rotate(342deg) brightness(92%) contrast(118%)}
+.back-top:is(:hover,:focus-visible){background-color:white;background-image:linear-gradient(var(--red),var(--red));background-size:100% 100%;color:white}
+.back-top:is(:hover,:focus-visible) img{filter:brightness(0) invert(1)}
+.back-top:is(:hover,:focus-visible) [data-node-id='1:19809']{color:white}
+.social-card,.social-card>div:first-child{border-radius:clamp(12px,1.04vw,20px);overflow:hidden}
+.social-card::before{border-radius:inherit}
+.social-link:is(:hover,:focus-visible) [data-node-id='1:19764']{mask-image:url('assets/34ef3.png');mask-size:100% 100%}
+
+/* User-supplied full composition is used directly, with working controls over it. */
+.scene-jelly{background:#8e168f url('assets/products/gummy-reference.png') center/cover no-repeat}
+.scene-jelly .product-atmosphere,.scene-jelly .product-copy,.scene-jelly .product-art{display:none}
+.featured-pagination{bottom:calc(10.83% - 11px);gap:0;padding:0 3px;border-radius:30px;height:22px}
+.featured-pagination button{width:20px;height:18px}
+.featured-pagination button span{width:10px;height:10px}
+@media(max-width:767px){.featured-pagination{gap:0}.featured-pagination button span{width:5px;height:5px}.featured-controls{inset:45% 8px auto}.featured-controls button{width:28px;height:28px}}
+@media(prefers-reduced-motion:reduce){.hero-cta,.detail-hover.more-button,.detail-hover.red-button,.back-top{transition:none}}
+
+/* Consistent header red and hover emphasis. */
+.site-header[data-theme=red] .site-brand img,.site-header[data-theme=light] .site-brand:is(:hover,:focus-visible) img{filter:url('#orion-header-red')!important}
+.site-header[data-theme=red] .header-tools>button:not(.header-mall) img,.site-header[data-theme=red] .header-tools>[data-node-id] img,.site-header .header-tools>button:not(.header-mall):is(:hover,:focus-visible) img{filter:url('#orion-icon-red')}
+.primary-nav button{padding:12px 6px;margin:-12px -6px;transition:color .25s,opacity .25s}
+.primary-nav:hover button:not(:hover):not(:focus-visible),.primary-nav:focus-within button:not(:focus-visible):not(:hover){opacity:.3}
+.primary-nav button:is(:hover,:focus-visible){opacity:1}
+
+/* The hero matches About; Category fills from red to white. */
+.hero-cta *{color:inherit!important}
+.category-section .detail-hover.more-button{background:var(--red) linear-gradient(white,white) no-repeat center bottom/100% 0%;color:white;border:2px solid var(--red)}
+.category-section .detail-hover.more-button img{filter:brightness(0) invert(1)}
+.category-section .detail-hover.more-button:is(:hover,:focus-visible){background-color:var(--red);background-image:linear-gradient(white,white);background-size:100% 100%;color:var(--red)}
+.category-section .detail-hover.more-button:is(:hover,:focus-visible) img,.ci-more:is(:hover,:focus-visible) img{filter:url('#orion-icon-red')}
+.ci-more img{filter:url('#orion-icon-red')}
+
+/* Change the YouTube pictogram into a red outline with a red play triangle. */
+
+.social-link:is(:hover,:focus-visible) [data-node-id='1:19764']::before{content:'';position:absolute;inset:8% 0;border:2px solid var(--red);border-radius:24%}
+.social-link:is(:hover,:focus-visible) [data-node-id='1:19764']::after{content:'';position:absolute;left:43%;top:31%;width:24%;height:38%;background:var(--red);clip-path:polygon(0 0,100% 50%,0 100%)}
+.social-link{padding:8px;margin:-8px}
+
+/* Desktop wheel sequence; normal scrolling remains available for touch and keys. */
+@media(prefers-reduced-motion:reduce){.hero-cta,.category-section .detail-hover.more-button{transition:none}}
+
+/* TOP and SNS states follow the supplied reference artwork. */
+.back-top{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;overflow:hidden}
+.back-top [data-node-id='1:19806'],.back-top [data-node-id='1:19809']{position:static;inset:auto;translate:none;width:auto;height:auto}
+.back-top [data-node-id='1:19806']>div{display:none}
+.back-top [data-node-id='1:19806']::before{content:'';display:block;width:19px;height:10px;background:var(--red);clip-path:polygon(50% 0,100% 100%,0 100%);transition:background-color .25s}
+.back-top [data-node-id='1:19809'] p{font:500 15px/1 'Infinity Sans',sans-serif;letter-spacing:0;color:inherit}
+.back-top:is(:hover,:focus-visible) [data-node-id='1:19806']::before{background:white}
+.social-card::after{position:absolute;left:50%;top:50%;translate:-50% -50%;z-index:3;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;color:white;font:400 32px/1 Arial,sans-serif;text-shadow:none;opacity:0;scale:.8;transition:opacity .3s,scale .3s;pointer-events:none}
+.social-card:is(:hover,:focus-visible)::after{opacity:1;scale:1}
+@media(max-width:767px){.social-card::after{width:42px;height:42px;font-size:26px}}
+
+/* White navigation on the cover, with the hovered item at full opacity. */
+.site-header[data-cover=true] .primary-nav button,.site-header[data-cover=true] .primary-nav button:is(:hover,:focus-visible){color:white}
+.site-header[data-cover=true] .site-brand img,.site-header[data-cover=true] .site-brand:is(:hover,:focus-visible) img{filter:url('#orion-logo-white')!important}
+.site-header[data-cover=true] .header-tools>button:not(.header-mall) img,.site-header[data-cover=true] .header-tools>button:not(.header-mall):is(:hover,:focus-visible) img,.site-header[data-cover=true] .header-tools>[data-node-id] img{filter:brightness(0) invert(1)}
+.site-header[data-cover=true] .mobile-toggle:is(:hover,:focus-visible){color:white}
+.site-header[data-cover=true] .primary-nav:hover button:not(:hover):not(:focus-visible),.site-header[data-cover=true] .primary-nav:focus-within button:not(:hover):not(:focus-visible){opacity:.35}
+.site-header[data-cover=true] .primary-nav button:is(:hover,:focus-visible){opacity:1}
+
+/* Every detail button shares the Category red-to-white fill. */
+.detail-hover.more-button,.detail-hover.red-button,.ci-more{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red) linear-gradient(white,white) no-repeat center bottom/100% 0%;border:2px solid var(--red);border-radius:50px;color:white;box-shadow:none;animation:none;transition:background-size .9s ease,color .25s}
+.ci-more,.social-more{padding:10px 20px}
+.detail-hover.more-button *,.detail-hover.red-button *,.ci-more *,.social-more *{color:inherit!important}
+.detail-hover.more-button img,.detail-hover.red-button img,.ci-more img{filter:brightness(0) invert(1)}
+.detail-hover.more-button:is(:hover,:focus-visible),.detail-hover.red-button:is(:hover,:focus-visible),.ci-more:is(:hover,:focus-visible){background-color:var(--red);background-image:linear-gradient(white,white);background-size:100% 100%;border-color:var(--red);box-shadow:none;animation:none}
+.detail-hover.more-button:is(:hover,:focus-visible) img,.detail-hover.red-button:is(:hover,:focus-visible) img,.ci-more:is(:hover,:focus-visible) img{filter:url('#orion-icon-red')}
+.social-more [data-name=arrow_right]{background:currentColor}
+.hero-cta{background:transparent linear-gradient(white,white) no-repeat center bottom/100% 0%;border:2px solid white;color:white;}
+.hero-cta:is(:hover,:focus-visible){background-color:transparent;background-image:linear-gradient(white,white);color:var(--red);border-color:white}
+
+/* Reuse the original YouTube silhouette while reversing its colours. */
+.social-link:is(:hover,:focus-visible) [data-node-id='1:19764']{mask:none}
+.social-link:is(:hover,:focus-visible) [data-node-id='1:19764']::before,.social-link:is(:hover,:focus-visible) [data-node-id='1:19764']::after{content:none}
+.social-link:is(:hover,:focus-visible) [data-node-id='1:19764'] img{filter:url('#youtube-inverted') drop-shadow(0 0 1px #e3051b)}
+.social-card::after{content:'';background:var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M5 16h20M18 8l8 8-8 8' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/28px 28px no-repeat}
+@media(prefers-reduced-motion:reduce){.hero-cta,.detail-hover.more-button,.detail-hover.red-button,.ci-more,.social-more{transition:none}}
+
+/* Smaller screens retain the desktop pill and a comfortably spaced menu. */
+.site-header[data-theme]{background:rgba(255,255,255,.45)}
+.site-header[data-cover=true]{background:transparent}
+.hero-cta{border-radius:999px}
+@media(max-width:767px){#mobile-nav button{border-bottom:1px solid #eee;}#mobile-nav button:last-child{border-bottom:0}}
+
+/* The quotation replaces the CI content before its red field expands. */
+
+/* Cover fill rises from the bottom on hover. */
+.hero-cta,.hero-cta:is(:hover,:focus-visible){isolation:isolate;overflow:hidden;background-color:transparent;background-image:linear-gradient(#fff,#fff);background-position:center bottom;background-repeat:no-repeat;background-origin:border-box;background-clip:border-box}
+.hero-cta{background-size:100% 0%;transition:background-size .9s cubic-bezier(.2,.65,.3,1),color .25s}
+.hero-cta:is(:hover,:focus-visible){background-size:100% 100%}
+@media(prefers-reduced-motion:reduce){.hero-cta{transition:none}}
+
+/* Section labels and headings appear together, followed by their descriptions. */
+.motion-ready .reveal :is(.heading-reveal-title,.heading-reveal-description){opacity:0;transform:translateY(18px);transition:opacity 1s ease,transform 1s ease}
+.motion-ready .reveal.is-revealed :is(.heading-reveal-title,.heading-reveal-description){opacity:1;transform:none}
+
+/* An outlined YouTube mark, with a transparent interior and red play icon. */
+.social-link:is(:hover,:focus-visible) [data-node-id='1:19764']{background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 24'%3E%3Crect x='1' y='1' width='30' height='22' rx='6' fill='none' stroke='%23e3051b' stroke-width='2'/%3E%3Cpath d='M13 6.5 22 12l-9 5.5z' fill='%23e3051b'/%3E%3C/svg%3E") center/contain no-repeat}
+.social-link:is(:hover,:focus-visible) [data-node-id='1:19764'] img{visibility:hidden}
+.social-link:is(:hover,:focus-visible){opacity:1}
+
+/* Keep the CI quote in one place and give its transitions more time. */
+
+/* Replace the entire product image as the next slide enters. */
+.featured-controls{display:none}
+.featured-scene[aria-hidden=true]{visibility:hidden}
+.featured-scene[aria-hidden=false]{visibility:visible}
+@keyframes featured-enter-next{from{opacity:0;transform:translateX(8%)}to{opacity:1;transform:translateX(0)}}
+@keyframes featured-enter-prev{from{opacity:0;transform:translateX(-8%)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.motion-ready .reveal :is(.heading-reveal-title,.heading-reveal-description){transition:none}.motion-ready .reveal :is(.heading-reveal-title,.heading-reveal-description){opacity:1;transform:none}.featured-scene.scene-enter-next,.featured-scene.scene-enter-prev{animation:none}.news-card{transition:none}}
+
+/* Slide controls sit on the artwork without a coloured pill behind them. */
+.news-track{padding-top:24px}
+.news-card{transition:translate .55s cubic-bezier(.2,.65,.3,1),background .2s}
+
+
+/* Each social icon and name forms one evenly spaced group. */
+.social-heading [data-node-id='1:19751']{display:flex;justify-content:center;gap:clamp(18px,2vw,38px)}
+.social-heading .social-link{display:flex;align-items:center;gap:8px;margin:0;padding:8px;flex:none}
+
+/* Match the other buttons' upward fill, retaining the TOP icon and text. */
+.back-top,.back-top:is(:hover,:focus-visible){background:white;isolation:isolate}
+.back-top::after{content:'';position:absolute;inset:0;z-index:-1;background:var(--red);transform:scaleY(0);transform-origin:bottom;transition:transform .9s cubic-bezier(.2,.65,.3,1);pointer-events:none}
+.back-top:is(:hover,:focus-visible)::after{transform:scaleY(1)}
+
+@media(max-width:767px){
+  .product-search{border-radius:999px}
+}
+@media(prefers-reduced-motion:reduce){.back-top::after,.news-card{transition:none}}
+
+/* Header icons turn Orion red; the wordmark gently enlarges. */
+.site-header .header-tools>button:not(.header-mall):is(:hover,:focus-visible) img{filter:url('#orion-icon-red')!important}
+.site-brand>div{overflow:visible;transition:transform .35s ease}
+
+/* Both panels move together when changing products. */
+.featured-scene.scene-enter-next{animation:featured-slide-in-next 1s cubic-bezier(.4,0,.2,1) both}
+.featured-scene.scene-enter-prev{animation:featured-slide-in-prev 1s cubic-bezier(.4,0,.2,1) both}
+.featured-scene.scene-exit-next,.featured-scene.scene-exit-prev{visibility:visible;pointer-events:none}
+.featured-scene.scene-exit-next{animation:featured-slide-out-next 1s cubic-bezier(.4,0,.2,1) both}
+.featured-scene.scene-exit-prev{animation:featured-slide-out-prev 1s cubic-bezier(.4,0,.2,1) both}
+.featured-section.is-transitioning :is(.jelly-friend,.jelly-king){animation-play-state:paused}
+.featured-section.is-transitioning .scene-jelly::before{filter:none!important}
+@keyframes featured-slide-in-next{from{transform:translateX(100%)}to{transform:translateX(0)}}
+@keyframes featured-slide-in-prev{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+@keyframes featured-slide-out-next{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+@keyframes featured-slide-out-prev{from{transform:translateX(0)}to{transform:translateX(100%)}}
+
+/* Keep social marks and their labels fully visible at every viewport size. */
+.social-heading,.social-heading [data-node-id='1:19743'],.social-heading [data-node-id='1:19748'],.social-heading [data-node-id='1:19750'],.social-heading [data-node-id='1:19751'],.social-link,.social-link>div,.social-brand-icon{overflow:visible}
+.social-heading [data-node-id='1:19748']{justify-content:center}
+.social-heading [data-node-id='1:19750'],.social-heading [data-node-id='1:19751']{width:max-content;max-width:none;height:auto}
+.social-heading [data-node-id='1:19751']{position:relative;inset:auto;translate:none}
+.social-heading .social-link>div{flex:none;width:auto;min-width:0}
+.social-heading .social-brand-icon{flex:none}
+.social-heading .social-link p{white-space:nowrap}
+
+/* The family menu opens upward and remains reachable across the small gap. */
+.family-control::before{content:'';position:absolute;bottom:100%;right:0;width:100%;height:14px}
+.family-popover:not([hidden]){animation:family-rise .35s ease both;transform-origin:bottom}
+@keyframes family-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+
+@media(prefers-reduced-motion:reduce){.site-brand>div,.story-copy{transition:none}.featured-scene.scene-enter-next,.featured-scene.scene-enter-prev,.featured-scene.scene-exit-next,.featured-scene.scene-exit-prev,.family-popover:not([hidden]){animation:none}}
+
+/* The logo changes colour; utility icons keep their colour and grow. */
+.site-brand:is(:hover,:focus-visible)>div{transform:none}
+.site-header .site-brand:is(:hover,:focus-visible) img,.site-header[data-cover=true] .site-brand:is(:hover,:focus-visible) img{filter:url('#orion-header-red')!important}
+.site-header .header-tools>button:not(.header-mall){transition:transform .3s ease}
+.site-header .header-tools>button:not(.header-mall):is(:hover,:focus-visible){transform:scale(1.12)}
+.site-header[data-cover=true] .header-tools>button:not(.header-mall):is(:hover,:focus-visible) img,.site-header[data-theme=light] .header-tools>button:not(.header-mall):is(:hover,:focus-visible) img{filter:brightness(0) invert(1)!important}
+.site-header[data-theme=red]:not([data-cover=true]) .header-tools>button:not(.header-mall):is(:hover,:focus-visible) img{filter:url('#orion-icon-red')!important}
+.site-header .mobile-toggle{transition:transform .3s ease}
+.site-header .mobile-toggle:is(:hover,:focus-visible){transform:scale(1.12);color:var(--header-color)}
+
+/* Specify the transition in both states so it also runs on hover-in. */
+.news-card,.news-card:hover,.news-card:focus-visible{translate:0 0;transition:translate .6s cubic-bezier(.2,.65,.3,1),background .2s}
+.news-card:is(:hover,:focus-visible){translate:0 -15px}
+@media(prefers-reduced-motion:reduce){.site-header .header-tools>button:not(.header-mall),.site-header .mobile-toggle,.news-card,.news-card:hover,.news-card:focus-visible{transition:none}}
+
+@media(min-width:768px){.ci-heading{top:clamp(55px,5vw,95px)}}
+
+/* Compact screens use individual circular navigation buttons. */
+@media(max-width:767px){
+  .site-header .site-brand>div{width:180px;height:auto}
+  #mobile-nav:not([hidden]){width:auto;left:auto;padding:0;gap:8px;align-items:flex-end;background:transparent;box-shadow:none}
+  #mobile-nav button{display:flex;align-items:center;justify-content:center;width:76px;height:76px;min-height:76px;padding:0;border:0;border-radius:50%;color:#222;text-align:center;box-shadow:0 4px 16px #0002;transition:color .25s}
+  #mobile-nav button:is(:hover,:focus-visible){color:var(--red)}
+}
+
+@property --menu-sweep{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes menu-ring-draw{from{--menu-sweep:0deg}to{--menu-sweep:360deg}}
+@media(max-width:767px){
+  #mobile-nav button{position:relative}
+  #mobile-nav button::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(var(--red) var(--menu-sweep),transparent 0);mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));pointer-events:none;opacity:0}
+  #mobile-nav button:is(:hover,:focus-visible)::after{opacity:1;animation:menu-ring-draw .8s ease forwards}
+  .social-section::before,.social-section::after{content:'';flex-basis:100%;height:0}
+  .social-section::before{order:6}.social-section::after{order:8}
+  .social-section .social-more{order:7;margin:35px auto 0}
+  .social-section .back-top{order:9;margin:65px 0 20px auto}
+  .footer-social>button{width:45px;height:45px;min-width:45px;min-height:45px}
+  .footer-extras [data-node-id='1:19858']{width:146px;min-height:40px;font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){#mobile-nav button:is(:hover,:focus-visible)::after{animation:none;--menu-sweep:360deg}}
+@media(max-width:380px){.footer-extras{flex-wrap:wrap;gap:18px}.footer-social{margin-left:auto}}
+
+/* Keep the cover logo fixed while its colour changes. */
+.site-header[data-cover=true] .site-brand,.site-header[data-cover=true] .site-brand>div,.site-header[data-cover=true] .site-brand:is(:hover,:focus-visible),.site-header[data-cover=true] .site-brand:is(:hover,:focus-visible)>div{transform:none!important;scale:1!important;transition:none}
+
+/* Let section headings begin fading in closer to the viewport centre. */
+.motion-ready .reveal{transition-duration:1.3s}
+.motion-ready .reveal :is(.heading-reveal-title,.heading-reveal-description){transition-duration:1.3s}
+.motion-ready .reveal .heading-reveal-description{transition-delay:.65s}
+
+/* Continue the ESG background behind the translucent fixed header. */
+@media(min-width:768px){.brand-esg-stage{top:0}}
+@media(min-width:1200px) and (min-height:760px){
+  .esg-heading{padding-top:calc(var(--header-height) + clamp(35px,5vh,65px))}
+}
+
+@media(max-width:767px){
+  .hero-cta{min-width:199px;height:62px}.hero-cta p{font-size:20px}
+  .category-section .more-button,.story-more,.news-heading .more-button{min-width:168px;min-height:59px;padding:12px 24px;font-size:18px}
+  .category-section .more-button p,.news-heading .more-button p{font-size:18px}
+  .ci-more,.social-section .social-more{min-width:144px;min-height:46px;padding:10px 20px;font-size:16px}
+  .social-section .back-top{width:60px;height:60px;flex-basis:60px}
+  .back-top [data-node-id='1:19806']::before{width:19px;height:10px}
+  .back-top [data-node-id='1:19809'] p{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){.motion-ready .reveal,.motion-ready .reveal :is(.heading-reveal-title,.heading-reveal-description){transition:none}}
+
+/* Use one consistent size for the detail actions throughout the page. */
+.detail-hover.more-button,.detail-hover.red-button,.ci-more,.social-more{width:168px;min-width:168px;height:59px;min-height:59px;padding:0 20px;font-size:18px;white-space:nowrap}
+.detail-hover.more-button p,.ci-more p,.social-more p{font-size:18px;line-height:1.2}
+.ci-more [data-name=arrow_right],.social-more [data-name=arrow_right]{width:11px;height:16px;flex:none}
+
+@media(max-width:767px){
+  .hero-description{width:calc(100% - 48px)}
+  .category-section{height:720px}
+  .social-section .social-more{margin-top:10px}
+
+  /* Make the footer marks the same visible size as their desktop versions. */
+  .footer-extras [data-action=family]{border-radius:999px}
+  .footer-social>button>div{display:flex;align-items:center;justify-content:center;width:28px;height:28px}
+  .footer-social .footer-brand-icon{position:relative;width:24px!important;height:24px!important;flex:none}
+
+  /* Keep the artwork proportions and place readable controls over its originals. */
+  .scene-jelly{background-size:100% auto;background-position:center top;background-color:#50a63a}
+}
+
+/* Centre each ESG arrow within its circular button. */
+.esg-card .esg-circle,.esg-card .esg-arrow{position:absolute;left:50%;top:50%;translate:-50% -50%}
+
+/* Keep the ESG controls below their descriptions on every card. */
+.esg-card>:is([data-node-id='1:19584'],[data-node-id='1:19591'],[data-node-id='1:19600']){display:block;position:absolute;left:50%;top:auto;bottom:24px;width:clamp(36px,2.61vw,50px);height:clamp(36px,2.61vw,50px);translate:-50% 0}
+
+/* Leave room around the complete CI artwork and use the site's body type size. */
+.ci-logo{overflow:visible}
+.ci-logo img{display:block;width:100%;height:100%;object-position:center}
+.ci-description{font-size:clamp(16px,1.042vw,20px);}
+
+@media(max-width:767px){
+  .site-header .mobile-toggle:is(:hover,:focus-visible){transform:scale(1.12)}
+  .detail-hover.more-button,.detail-hover.red-button,.ci-more,.social-more{width:144px;min-width:144px;height:48px;min-height:48px;padding:0 16px;font-size:16px}
+  .detail-hover.more-button p,.ci-more p,.social-more p{font-size:16px}
+  .social-heading .social-link p{font-size:clamp(14px,3.33vw,20px)}
+  .social-heading .social-link{padding:4px;gap:6px}
+  .social-heading [data-node-id='1:19751']{gap:clamp(3px,1.5vw,12px)}
+  .ci-logo{height:auto;}
+  .ci-description{font-size:16px;}
+
+  /* Restore the supplied full-width banner and its original NEW/BEST artwork. */
+  .featured-section{height:56.25vw;min-height:0}
+  .scene-jelly{background:#8e168f url('assets/products/gummy-reference.png') center/cover no-repeat}
+  .product-tabs{top:80.8%;bottom:auto;gap:1.15vw}
+  .featured-pagination{bottom:auto;height:20px}
+  .featured-pagination button{width:clamp(8px,1.67vw,10px);height:20px}
+}
+
+/* Show the complete CI mark with tighter, regular-weight description lines. */
+.ci-logo{aspect-ratio:210/180}
+.ci-logo img{padding:0;object-fit:contain}
+.ci-description{gap:0;line-height:1.4;font-weight:400}
+.ci-description p{margin:0;line-height:1.4;font-weight:400}
+@media(max-width:767px){.ci-logo{aspect-ratio:210/180}.ci-description{line-height:1.4}}
+
+/* Fill one desktop screen, keeping the bottom of the original banner visible. */
+@media(min-width:768px){
+  .featured-section{height:100svh;min-height:0;max-height:none;--gummy-height:max(100svh,56.25vw);--gummy-width:max(100vw,177.778svh)}
+  .product-tabs{gap:calc(var(--gummy-width) * .0115)}
+  .featured-pagination{bottom:auto}
+}
+
+/* Give the SNS call to action and TOP control a larger vertical separation. */
+
+/* Rounded, direction-aware header following the portfolio's mountaineering site. */
+:root{--orion-header-gutter:clamp(20px,3.333vw,64px);--orion-header-top:10px}
+.site-header{inset:var(--orion-header-top) var(--orion-header-gutter) auto;width:calc(100% - 2 * var(--orion-header-gutter));border-radius:999px;padding-inline:clamp(18px,1.5vw,30px);transition:transform .3s ease,background-color .35s,color .35s;will-change:transform}
+.site-header.is-scroll-hidden{transform:translateY(calc(-100% - 20px));pointer-events:none}
+.site-header.is-scroll-hidden:has(:focus-visible){transform:none;pointer-events:auto}
+@media(max-width:767px){.site-header{padding-inline:18px}#mobile-nav:not([hidden]){top:calc(100% + 8px);}}
+
+/* Expand the red field from the middle as a circle. */
+.quote-stage{isolation:isolate;background:#fff}
+
+.site-footer [data-action=family]{border-radius:999px;justify-content:center}
+@media(prefers-reduced-motion:reduce){.site-header{transition:none}}
+
+/* Only the search panel passes over the cover; later sections stay in normal flow. */
+.cover-transition{position:relative;isolation:isolate;width:100%}
+.cover-transition .search-section{position:relative;z-index:1;width:100%}
+
+/* About rows reveal the photo before the copy. */
+.motion-ready .story-row .story-copy :is(h3,.story-description p){transition-delay:.45s}
+@media(prefers-reduced-motion:reduce){.motion-ready .story-row .story-more{opacity:1;transform:none;transition:none}}
+
+@media(max-width:767px){
+  #mobile-nav:not([hidden]){right:-2px}
+  .social-heading .social-link,.social-heading .social-link>div{align-items:center}
+  .social-heading .social-link>div:first-child{display:flex;align-items:center;justify-content:center;width:32px;height:32px}
+  .social-heading .social-brand-icon{width:32px;height:32px}
+  .social-heading .social-brand-icon img{position:static;width:100%;height:100%;object-fit:contain;object-position:center}
+  .social-heading .social-link p{line-height:1.2}
+  .footer-nav p{font-size:14px;line-height:1.45}
+}
+@media(min-width:1200px){.ci-more{top:73%}}
+
+@media(max-width:767px){
+  .social-section .back-top{margin-top:407px}
+}
+@media(min-width:768px){
+  /* Preserve the whole banner while fitting it into one screen. */
+  .featured-section{--gummy-height:100svh;--gummy-width:100vw}
+  .scene-jelly{background-size:100% 100%;background-position:center}
+  .social-section{height:calc(1568 * var(--u) + 59px + clamp(40px,6.51vw,125px) + 105px)}
+  .social-section .back-top{top:calc(1568 * var(--u) + 59px + clamp(40px,6.51vw,125px))}
+}
+
+@media(min-width:768px){.hero-cta{top:71%}}
+
+
+
+/* The red circle grows in three deliberate scroll steps. */
+
+.ci-description,.ci-description p{font-family:inherit;font-weight:400;line-height:1.55}
+@media(max-width:767px){
+  #mobile-nav button{backdrop-filter:blur(10px)}
+}
+@media(min-width:768px){
+  .product-tabs{top:calc(100% - var(--gummy-height) * .192 + 16px)}
+}
+
+/* Keep CI content visible and let the following brand statement scroll normally. */
+.product-search{border-radius:999px!important}
+.search-section{border-radius:36px 36px 0 0}
+/* The gummy artwork already includes the NEW and BEST labels. */
+@media(max-width:767px){
+  .news-card,.news-card > div:first-child,.news-card > div:first-child > div{text-align:left}
+  .news-card > div:first-child{align-items:flex-start}
+}
+@media(min-width:1200px) and (min-height:760px){
+  .category-section{height:100svh}
+}
+@media(max-width:767px){.news-card > div:first-child p{text-align:left!important}}
+
+/* The category artwork and labels remain clear of the bottom edge. */
+@media(min-width:1200px) and (min-height:760px){.category-carousel{top:20svh}}
+/* Do not blur any part of the original gummy artwork. */
+.featured-pagination{background:transparent!important}
+@media(min-width:768px){
+  .featured-pagination{top:calc(89.17% - 11px)}
+  .featured-pagination button{background:#69a944;border:0}
+  .featured-pagination button:is(:hover,:focus-visible){background:#69a944}
+}
+@media(max-width:767px){
+  .featured-pagination{top:calc(89.17% - 10px)}
+  .featured-pagination button{background:#69a944;border:0}
+}
+.featured-pagination button,.featured-pagination button:is(:hover,:focus-visible){background:transparent}
+
+/* CI and its brand statement stay static while the page scrolls. */
+.brand-esg-scroll{height:auto!important}
+.brand-esg-stage{position:relative!important;top:auto!important}
+.brand-quote,.quote-stage{background:var(--red)!important;color:#fff!important}
+/* Keep the carousel labels well inside the viewport at desktop heights. */
+
+/* Cover and category fills extend underneath their outlines. */
+
+.category-section .more-button{isolation:isolate;overflow:hidden;background:var(--red)!important;color:#fff;transition:color .3s}
+@media(prefers-reduced-motion:no-preference){.motion-ready .category-section .category-more-reveal{opacity:0;transition:opacity .8s ease,color .3s}.motion-ready .category-section .category-more-reveal.is-revealed{opacity:1}}
+.category-section .more-button::before{content:'';position:absolute;inset:-2px;z-index:-1;border-radius:inherit;background:#fff;transform:scaleY(0);transform-origin:bottom;transition:transform .7s ease}
+.category-section .more-button:is(:hover,:focus-visible){color:var(--red);background:var(--red)!important}
+.category-section .more-button:is(:hover,:focus-visible)::before{transform:scaleY(1)}
+/* Only the visual highlight cycles; the search selection remains intact. */
+.keyword-cycling .keyword,.keyword-cycling .keyword[aria-pressed=true]{border-color:#ddd!important;color:#aaa!important}
+.keyword-cycling .keyword *{color:inherit!important}
+.keyword-cycling .keyword.is-cycle-active,.keyword-cycling .keyword:is(:hover,:focus-visible){border-color:var(--red)!important;color:var(--red)!important}
+
+.motion-ready .story-row .story-more{transition-delay:.15s,.15s,0s,0s}
+.social-heading .social-link[data-node-id='1:19757']{transform:translateX(6px)}
+@media(max-width:767px){
+  #mobile-nav button{background:rgba(255,255,255,.88)}
+}
+@media(prefers-reduced-motion:reduce){.category-section .more-button::before{transition:none}}
+.category-section .more-button{position:absolute;z-index:12}
+.news-card:is(:hover,:focus-visible){background:#f7f7f7!important}
+
+/* At the end of About, reveal the CI band one wheel gesture at a time. */
+@media(max-width:767px){.hero-title{top:49%}.hero-description{top:55%}.hero-cta{top:61%}}
+@media(max-width:350px){.hero-title{top:45%}.hero-description{top:52%}.hero-cta{top:61%}}
+
+/* Cover the full printed BEST pill during its hover state. */
+/* Social cards reveal as they enter the viewport. */
+.motion-ready .social-card.social-reveal{opacity:0;transform:translateY(22px);transition:opacity .85s ease,transform .85s ease}
+.motion-ready .social-card.social-reveal.is-revealed{opacity:1;transform:none}
+@media(max-width:767px){.site-header[data-theme]:not([data-cover=true]){background:rgba(255,255,255,.7)}}
+@media(prefers-reduced-motion:reduce){.motion-ready .social-card.social-reveal{opacity:1;transform:none;transition:none}}
+
+/* Each About row waits in place for its own reveal gesture. */
+
+/* TOP follows the viewport after the cover has passed. */
+body > .back-top{position:fixed!important;top:auto!important;left:auto!important;right:clamp(20px,4vw,72px)!important;bottom:clamp(20px,3vw,56px)!important;translate:none!important;margin:0!important;z-index:90;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,visibility .25s}
+body > .back-top.is-visible{opacity:1;visibility:visible;pointer-events:auto}
+body > .back-top{width:60px!important;height:60px!important}
+
+/* Keep the category artwork below its heading, with space for its logo. */
+@media(min-width:1200px){
+  .category-item{width:min(calc(500 * var(--u)),45svh)}
+}
+/* Show the complete CI canvas and the quote strip in one desktop viewport. */
+@media(min-width:1200px) and (min-height:760px){
+  .ci-section{min-height:0!important}
+  section.esg-section[id]{height:100svh!important;min-height:0;scroll-margin-top:0}
+}
+
+/* Draw the complete BEST pill so its original artwork never shows through. */
+@media(max-width:767px){
+  .footer-extras{flex-wrap:nowrap;gap:12px}
+  .footer-extras .footer-social{order:0;margin:0}
+  .footer-extras > [data-node-id='1:19856']{order:1;margin-left:auto}
+}
+@media(min-width:1200px){.category-carousel{top:clamp(270px,30svh,300px)!important}}
+
+/* News cards enter independently; the heading group reveals together. */
+.motion-ready .news-card.press-reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease,translate .6s cubic-bezier(.2,.65,.3,1)}
+.motion-ready .news-card.press-reveal.is-revealed{opacity:1;transform:none}
+.motion-ready .social-more.reveal{transition:opacity .8s ease,transform .8s ease}
+@media(prefers-reduced-motion:reduce){.motion-ready .news-card.press-reveal,.motion-ready .social-more.reveal{opacity:1;transform:none;transition:none}}
+
+/* The two labels follow the size and positions of the original banner artwork. */
+.product-tabs .featured-tab{display:grid;place-items:center;min-width:0;min-height:0;border-radius:999px;background:transparent;color:transparent;box-shadow:none;filter:none;transition:background-color .25s ease,color .25s ease,border-color .25s ease,box-shadow .25s ease}
+.product-tabs .featured-tab:focus-visible{outline:2px solid white;outline-offset:3px}
+@media(max-width:767px){
+  .product-tabs .featured-tab{height:2.25vw}
+  .social-section{padding-bottom:299px!important}
+}
+@media(min-width:1200px){
+  .category-item[data-position=left]{transform:translate(-130%,calc(110 * var(--u))) scale(.7)}
+  .category-item[data-position=right]{transform:translate(130%,calc(110 * var(--u))) scale(.7)}
+}
+
+@media(prefers-reduced-motion:reduce){.product-tabs .featured-tab{transition:none}}
+
+/* The original banner supplies both resting labels; matching hit areas handle hover. */
+.product-tabs .featured-tab{width:6.875vw;box-sizing:border-box}
+
+@media(max-width:767px){body > .back-top{right:clamp(8px,2vw,14px)!important}}
+
+.product-tabs .featured-tab:last-child::before{content:none}
+/* Footer icon dimensions. */
+.footer-social>button>div{display:flex;align-items:center;justify-content:center;width:28px;height:28px}
+.footer-social .footer-brand-icon{position:relative;width:24px!important;height:24px!important;flex:none}
+
+/* Restore a translucent white TOP button and fill it red on hover. */
+body > .back-top,body > .back-top:is(:hover,:focus-visible){background:rgba(255,255,255,.78);color:var(--red)}
+body > .back-top [data-node-id='1:19809']{color:var(--red)}
+body > .back-top [data-node-id='1:19806']::before{background:var(--red)}
+body > .back-top:is(:hover,:focus-visible){color:#fff}
+body > .back-top:is(:hover,:focus-visible) [data-node-id='1:19809']{color:#fff}
+body > .back-top:is(:hover,:focus-visible) [data-node-id='1:19806']::before{background:#fff}
+/* About remains still and immediately readable, while its buttons retain hover. */
+.story-photo img,.story-photo:hover img{scale:1!important}
+/* The bitmap contains the labels: overlay their exact relative rectangles. */
+.product-tabs{inset:0!important;width:100%;height:100%;translate:none!important;gap:0!important;pointer-events:none}
+.product-tabs .featured-tab{position:absolute;top:80.9%;height:3.9%;padding:0;translate:none!important;pointer-events:auto}
+.product-tabs .featured-tab:first-child{left:42.7%;width:6.56%}
+.product-tabs .featured-tab:last-child{left:50.42%;width:6.88%}
+@media(min-width:1200px) and (min-height:760px){
+  #news.news-section{height:100svh;min-height:0;box-sizing:border-box;padding-block:clamp(40px,6vh,80px)}
+}
+
+/* The labels are part of the banner image; hovering must leave them unchanged. */
+.product-tabs .featured-tab,.product-tabs .featured-tab:is(:hover,:focus-visible){background:transparent!important;color:transparent!important;border-color:transparent!important;box-shadow:none!important;filter:none!important;backdrop-filter:none!important;transform:none!important;scale:1!important;transition:none!important}
+/* Keep the original footer proportions on both desktop and narrow screens. */
+.footer-social>button{width:45px;height:45px;min-width:45px;min-height:45px}
+
+/* Match the category button: white rises over red, with readable red text. */
+.social-more{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;isolation:isolate;overflow:hidden!important;background:var(--red)!important;border:2px solid var(--red);border-radius:50px;color:#fff!important;transition:color .3s}
+.social-more::before{content:"";position:absolute;inset:-2px;z-index:-1;border-radius:inherit;background:#fff;transform:scaleY(0);transform-origin:bottom;transition:transform .7s ease}
+.social-more:is(:hover,:focus-visible){color:var(--red)!important}
+.social-more:is(:hover,:focus-visible)::before{transform:scaleY(1)}
+.story-more:is(:hover,:focus-visible),.news-heading .more-button:is(:hover,:focus-visible){color:var(--red)!important}
+.story-more:is(:hover,:focus-visible) img,.news-heading .more-button:is(:hover,:focus-visible) img{filter:url('#orion-icon-red')!important}
+/* The artwork stays one image; the filter gently moves only the character areas. */
+.scene-jelly{background-image:none!important}
+.scene-jelly::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url('assets/products/gummy-reference.png') center/100% 100% no-repeat}
+.gummy-pack-hover{position:absolute;inset:0;z-index:2;background:url('assets/products/gummy-reference.png') center/100% 100% no-repeat;clip-path:polygon(47.9% 36%,62.5% 38.9%,59.6% 79.3%,45.5% 76.4%,46.7% 69.5%,39.8% 74.5%,35.4% 54.2%,45.1% 47.2%,47.6% 56.7%);transform-origin:49% 58%;transition:transform .25s ease-out}
+.gummy-floor{display:none}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.gummy-pack-hover:hover{transform:scale(1.045)}}
+.featured-section.is-visible .scene-jelly[aria-hidden="false"]::before{filter:url('#gummy-characters-wiggle')}
+/* Cover the controls embedded in the artwork with a nearby strip of its own background. */
+.scene-jelly::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:url('assets/products/gummy-reference.png') center 87.9%/100% 10000% no-repeat;mask-image:linear-gradient(to right,transparent 38%,#000 41%,#000 59%,transparent 62%),linear-gradient(to bottom,transparent 78.8%,#000 80%,#000 90.5%,transparent 92%);mask-composite:intersect}
+.featured-section.is-transitioning .product-tabs{visibility:hidden}
+.product-tabs .featured-tab{border:2px solid #fff!important;font:700 clamp(8px,1.25vw,24px)/1 'Infinity Sans',sans-serif!important}
+.product-tabs .featured-tab:first-child{background:transparent!important;color:#fff!important}
+.product-tabs .featured-tab:first-child:is(:hover,:focus-visible){border-color:#fff!important}
+.product-tabs .featured-tab:last-child{background:#fff!important;color:#8e168f!important}
+.ci-logo{width:clamp(185px,11.8vw,280px)}
+@media(min-width:1200px) and (min-height:760px){.ci-description{top:calc(60% + 45px)}.ci-more{top:calc(73% + 45px)}}
+@media(max-width:767px){.ci-logo{width:min(220px,60vw)}.ci-description{margin-top:16px}.ci-more{margin-top:20px}}
+@media(prefers-reduced-motion:reduce){.social-more::before{transition:none}.featured-section.is-visible .scene-jelly[aria-hidden="false"]::before{filter:none}}
+
+/* Family button dimensions are shared by desktop and narrow screens. */
+.site-footer [data-action=family]{width:147px;min-width:147px;height:45px;min-height:45px;padding:0 20px;gap:10px;font-size:14px}
+.site-footer [data-action=family] p{font-size:14px;line-height:1.5}
+.site-footer [data-action=family] [data-node-id='1:19860'],.site-footer [data-action=family] [data-node-id='1:19860']>div,.site-footer [data-action=family] [data-name=arrow_right]{width:20px;height:20px}
+
+/* CI reveal is held only for desktop mouse-wheel navigation. */
+@media(min-width:1200px) and (min-height:760px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .ci-scroll-enabled .ci-section :is(.ci-logo,.ci-description,.ci-more){transition:opacity .7s ease,transform .7s ease;opacity:1}
+  .ci-scroll-enabled .ci-section.ci-awaiting :is(.ci-logo,.ci-description,.ci-more){opacity:0;transform:translateY(22px);pointer-events:none}
+  .ci-scroll-enabled .ci-section:not(.ci-awaiting) .ci-description{transition-delay:.12s}
+  .ci-scroll-enabled .ci-section:not(.ci-awaiting) .ci-more{transition:opacity .7s .2s,transform .7s .2s,background-size .9s,color .25s}
+}
+.ci-more:is(:hover,:focus-visible){color:var(--red)!important}
+.ci-more:is(:hover,:focus-visible) img{filter:url('#orion-icon-red')!important}
+/* A continuously looping strip, with one accessible label on its container. */
+.brand-quote{height:clamp(80px,6vw,120px)!important;min-height:0;overflow:hidden}
+.quote-stage{width:100%;height:100%;padding:0!important;display:flex;align-items:center;justify-content:flex-start;overflow:hidden}
+.brand-quote-track{display:flex;flex:none;width:max-content;animation:brand-quote-marquee 32s linear infinite;will-change:transform}
+.brand-quote-group{display:flex;flex:none;align-items:center;white-space:nowrap;font-family:Pretendard,sans-serif;font-size:clamp(18px,1.7vw,32px);font-weight:600;line-height:1;gap:2em;padding-right:2em}
+.quote-stars{display:inline-flex;gap:.35em;font-size:.75em}
+@keyframes brand-quote-marquee{to{transform:translateX(-25%)}}
+@media(prefers-reduced-motion:reduce){.brand-quote-track{animation:none;will-change:auto}.ci-section :is(.ci-logo,.ci-description,.ci-more){opacity:1;visibility:visible;transform:none;transition:none}}
+
+@media(prefers-reduced-motion:no-preference){.ci-heading{transition:opacity .7s ease,transform .7s ease}.ci-heading.ci-heading-pending{opacity:0;transform:translateY(14px)}}
+
+/* Restore the original icon silhouettes without external SVG masks. */
+.esg-card .esg-arrow{mask:none;background:currentColor;clip-path:polygon(37.5% 8%,79% 50%,37.5% 92%)}
+.social-more [data-name=arrow_right]{mask:none;clip-path:polygon(18% 8%,79% 50%,18% 92%)}
+.site-header[data-theme=red] .site-brand img,.site-header .site-brand:is(:hover,:focus-visible) img,.site-header[data-cover=true] .site-brand:is(:hover,:focus-visible) img{filter:none!important}
+.site-header[data-cover=true] .site-brand:not(:hover):not(:focus-visible) img{filter:url('#orion-logo-white')!important}
+@media(min-width:1200px) and (min-height:760px){
+  .brand-quote{height:clamp(120px,9.6354vw,185px)!important}
+  .ci-section{height:calc(100svh - clamp(120px,9.6354vw,185px))!important}
+}
+
+/* CI and SNS use the original text-only action; the other actions share one pill size. */
+.ci-more.detail-hover,.social-section .social-more,.ci-more.detail-hover:is(:hover,:focus-visible),.social-section .social-more:is(:hover,:focus-visible){width:auto;min-width:0;height:auto;min-height:0;padding:4px 0;border:0;background:transparent!important;color:#666!important;box-shadow:none;overflow:visible!important}
+.ci-more.detail-hover:is(:hover,:focus-visible),.social-section .social-more:is(:hover,:focus-visible){color:var(--red)!important}
+.social-section .social-more::before{content:none}
+.ci-more [data-name=arrow_right],.social-more [data-name=arrow_right],.detail-hover.more-button [data-name=arrow_right],.detail-hover.red-button [data-name=arrow_right]{background:currentColor;mask:none;clip-path:polygon(18% 8%,79% 50%,18% 92%)}
+.ci-more [data-name=arrow_right] img,.social-more [data-name=arrow_right] img,.detail-hover.more-button [data-name=arrow_right] img,.detail-hover.red-button [data-name=arrow_right] img{visibility:hidden}
+.story-more .button-arrow{background:currentColor;clip-path:polygon(18% 8%,79% 50%,18% 92%)}
+.story-more .button-arrow img{visibility:hidden}
+@media(min-width:768px){
+  .brand-quote{height:clamp(85px,6.25vw,120px)!important}
+  .ci-section{height:calc(100svh - clamp(85px,6.25vw,120px))!important;min-height:0!important}
+  .ci-logo{top:calc(32% + 45px)}
+  .ci-description{top:calc(60% + 45px)}
+  .ci-more{top:calc(73% + 45px)}
+  .news-heading .more-button{align-self:end;transform:translateY(-1px)}
+  .category-section{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:max-content;align-content:start}
+  .category-heading,.category-section>.more-button{grid-area:1/1}
+  .category-section>.more-button{position:relative;inset:auto;align-self:end;justify-self:end;margin:0 var(--gutter) calc(10 * var(--u) + 1px) 0;transform:none}
+}
+/* Let the fill reach beneath the outline so its lower edge stays even. */
+.news-heading .detail-hover.more-button{background-origin:border-box;background-clip:border-box}
+.social-section .social-more p{font-weight:400}
+.ci-more p,.social-section .social-more p{font-size:16px}
+@media(max-width:767px){.ci-more p,.social-section .social-more p{font-size:14px}}
+.mobile-break{display:none}
+@media(max-width:767px){.mobile-break{display:block}.ci-section .ci-logo{width:min(150px,90vw)}}
+
+/* Recompose the product artwork as the viewport narrows instead of stretching the desktop poster. */
+@media(max-width:1199px){
+  .featured-section{height:auto;min-height:0;max-height:none;aspect-ratio:1.6}
+  .scene-jelly{background:linear-gradient(to bottom,#ef8a1c 0 31.5%,#801085 31.5% 78%,#69b83e 78% 100%)!important}
+  .scene-jelly::before{content:"";background:url('assets/9bba5.png') center/cover no-repeat;opacity:.16;mix-blend-mode:soft-light;filter:none!important}
+  .scene-jelly::after{content:none}
+  .gummy-floor{position:absolute;inset:auto 0 0;height:12%;z-index:1;display:block;background:url('assets/products/gummy-reference.png') center bottom/auto 1000% no-repeat;mask-image:linear-gradient(to bottom,transparent,#000 18%);pointer-events:none}
+  .scene-jelly .product-art{display:block;inset:0;z-index:2}
+  .gummy-pack-hover{display:none}
+  .scene-jelly .asset-crop{animation:none;rotate:none;filter:none}
+  .scene-jelly .jelly-friend,.scene-jelly .jelly-king{animation:product-float 6s ease-in-out infinite alternate}
+  .scene-jelly .jelly-logo{left:8%;top:8%;width:24%}
+  .scene-jelly .jelly-pack{left:31%;top:27%;width:38%;pointer-events:auto;transition:scale .25s ease-out}
+  .scene-jelly .jelly-caption{right:3%;top:20%;width:29%}
+  .scene-jelly .jelly-friend-left{left:4%;bottom:16%;width:10%}
+  .scene-jelly .jelly-friend-small{left:13%;bottom:19%;width:8%}
+  .scene-jelly .jelly-king{right:3%;bottom:17%;width:17%}
+  .product-tabs .featured-tab{top:auto;bottom:15%;height:clamp(25px,4.2vw,40px);font-size:clamp(11px,1.8vw,18px)!important}
+  .product-tabs .featured-tab:first-child{left:calc(50% - 112px);width:100px}
+  .product-tabs .featured-tab:last-child{left:calc(50% + 12px);width:100px}
+  .featured-pagination{top:auto!important;bottom:8%;height:26px}
+}
+@media(hover:hover) and (max-width:1199px) and (prefers-reduced-motion:no-preference){.scene-jelly .jelly-pack:hover{scale:1.045}}
+@media(min-width:481px) and (max-width:767px){
+  .featured-section{aspect-ratio:.946}
+  .scene-jelly .jelly-logo{left:5%;top:10%;width:40%}
+  .scene-jelly .jelly-pack{left:21%;top:33%;width:60%}
+  .scene-jelly .jelly-caption{right:2%;top:19%;width:35%}
+  .scene-jelly .jelly-friend-left{left:3%;bottom:19%;width:13%}
+  .scene-jelly .jelly-friend-small{left:12%;bottom:20%;width:12%}
+  .scene-jelly .jelly-king{right:2%;bottom:20%;width:25%}
+}
+@media(max-width:480px){
+  .featured-section{aspect-ratio:.54}
+  .scene-jelly .jelly-logo{left:5%;top:10%;width:53%}
+  .scene-jelly .jelly-pack{left:5%;top:34%;width:90%}
+  .scene-jelly .jelly-caption,.scene-jelly .jelly-friend-left,.scene-jelly .jelly-friend-small,.scene-jelly .jelly-king{display:none}
+  .product-tabs .featured-tab{bottom:15%;height:30px;font-size:12px!important}
+  .product-tabs .featured-tab:first-child{left:calc(50% - 92px);width:82px}
+  .product-tabs .featured-tab:last-child{left:calc(50% + 10px);width:82px}
+}
+@media(max-width:1199px) and (prefers-reduced-motion:reduce){.scene-jelly .jelly-pack{transition:none}}
+.family-control{transform:translateY(-8px)}
+@media(max-width:767px){.family-control{transform:none}}
+
+/* Reveal About as its heading and each image/text row enter the viewport. */
+@media(prefers-reduced-motion:no-preference){
+  .about-reveal .story-photo,.about-reveal .story-copy,.about-heading.about-reveal{transition:opacity .8s ease,transform .8s ease}
+  .about-reveal .story-copy{transition-delay:.16s}
+  .about-reveal.about-reveal-pending .story-photo,.about-reveal.about-reveal-pending .story-copy,.about-heading.about-reveal-pending{opacity:0;transform:translateY(20px)}
+}
+
+/* Keep both CI lines distinct and match the desktop social icon proportions. */
+.ci-description p + p{margin-top:5px}
+@media(max-width:767px){
+  .social-heading [data-node-id='1:19754'],.social-heading [data-node-id='1:19759'],.social-heading [data-node-id='1:19764']{width:32px;height:32px}
+  .social-heading .social-link[data-node-id='1:19757']{transform:none}
+}

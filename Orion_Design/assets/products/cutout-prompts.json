@@ -1,0 +1,18 @@
+{
+  "method": "Built-in image_gen, background-extraction, transparent output",
+  "outputs": [
+    "pocachip-cutout-v1.png",
+    "chocosongi-cutout-v1.png"
+  ],
+  "prompts": [
+    {
+      "name": "poca",
+      "prompt": "Use case: background-extraction. Edit target: the attached Orion Pocachip product poster. Create a genuinely transparent PNG cutout of ONLY the two photographed snack bags shown in the upper half (one blue Original bag behind and one green Onion bag in front) and the few photographic potato chips immediately around those bags. Preserve the original package shapes, colors, printed Korean 포카칩 lettering, English Original and Onion, Orion logos, printed potato illustrations and all packaging text EXACTLY as in the source; do not redesign, repaint or invent lettering. Remove all blue/white poster background, the oversized floating logo above the bags, the standalone 生 slogan beneath the bags, all poster text, boards and illustrations lower down. Extract the full two bags with clean natural edges, no chopped corners, no blue or green background halos. Keep their original overlapping arrangement. Center the extracted group on transparent alpha with modest clear padding, 3:2 landscape composition, no background, no floor and no additional objects. This is a precise background-removal edit, not a new advertisement."
+    },
+    {
+      "name": "songi",
+      "prompt": "Use case: background-extraction. Edit target: the attached Orion Chocosongi poster. Create a genuinely transparent PNG cutout of ONLY the large yellow-and-green 초코송이 product box and the smiling brown-haired mascot standing immediately to its right in the upper half of the source. Preserve the exact original box design, Korean 초코송이 lettering, Orion logos, printed character and snack illustrations, full mascot face, both hands, both complete legs and blue shoes, original drawing style and colors. Keep the original package-and-mascot arrangement. Remove all yellow/green poster background, scenery, houses, trees, flowers, clouds, separate huge logo above, detached mushroom biscuits, arrows and all standalone slogans. Do not add any lettering, alter the brand lettering, redesign the character or change the perspective. Clean accurate natural contours, no angular clipping, no colored background fringes. Center this extracted group with modest transparent padding on a 3:2 landscape PNG canvas. This is a precise background-removal edit, not a new rendering."
+    }
+  ],
+  "note": "Generated derivative cutouts. Original user posters remain unchanged; derivative pixels are not claimed to be identical to the originals."
+}
