@@ -95,7 +95,7 @@ function positionProjectPreview(row, randomize = false) {
     return result;
   });
   const reference = referenceLayout.find((item) => item.row === row);
-  const above = row.matches(".box2, .box3, .box4");
+  const above = row.matches(".box1, .box2, .box3, .box4");
   const verticalDrop = row.matches(".box2") ? 36 : 0;
   let rightEdge = reference.description.left - 24;
   let width = preferredWidth;
