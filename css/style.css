@@ -251,7 +251,7 @@ header.header-on-light .year {
 .project-link {
   position: relative;
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) max-content;
   align-items: start;
   gap: 24px;
   min-height: 84px;
@@ -294,24 +294,14 @@ header.header-on-light .year {
 .project-name {
   position: relative;
   z-index: 20;
-  display: inline-flex;
-  align-items: baseline;
-  gap: clamp(32px, 4.583vw, 88px);
   justify-self: start;
+  min-width: 0;
   background: #fff;
   font-size: 32px;
   font-weight: 500;
   line-height: 1.5;
-  white-space: nowrap;
-}
-
-.project-type {
-  flex: 0 0 3em;
-  font: inherit;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: inherit;
-  color: inherit;
+  white-space: normal;
+  word-break: keep-all;
 }
 
 .project-details {
