@@ -147,7 +147,7 @@ header.hide {
 
 .project-link::after {
   width: 0;
-  background-color: var(--project-line-color, var(--project-color));
+  background-color: var(--project-color);
   transition: width 1s ease-in-out;
 }
 
@@ -195,7 +195,6 @@ header.hide {
 }
 .box3 {
   --project-color: #ffc107;
-  --project-line-color: #9a7100;
 
   --preview-y: -8px;
 }
