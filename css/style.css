@@ -308,6 +308,7 @@ header.header-on-light .year {
 .project-type {
   flex: 0 0 3em;
   font: inherit;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: inherit;
   color: inherit;
