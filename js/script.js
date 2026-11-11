@@ -95,12 +95,12 @@ function positionProjectPreview(row, randomize = false) {
     return result;
   });
   const reference = referenceLayout.find((item) => item.row === row);
-  const above = row.matches(".box1, .box2, .box3, .box4");
-  const verticalDrop = row.matches(".box2") ? 36 : 0;
+  const above = row.matches(".box1, .box3, .box4");
+  const belowOffset = row.matches(".box2") ? bounds.height + 18 : 40;
   let rightEdge = reference.description.left - 24;
   let width = preferredWidth;
   for (let pass = 0; pass < 2; pass += 1) {
-    const top = above ? reference.top - 18 - y - width * 9 / 16 - 16 + verticalDrop : reference.top + 40 + y - 16;
+    const top = above ? reference.top - 18 - y - width * 9 / 16 - 16 : reference.top + belowOffset + y - 16;
     const bottom = top + width * 9 / 16 + 36;
     referenceLayout.forEach(({ description }) => {
       if (description.top < bottom && description.bottom > top) rightEdge = Math.min(rightEdge, description.left - 24);

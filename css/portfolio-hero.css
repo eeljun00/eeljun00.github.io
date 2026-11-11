@@ -193,7 +193,6 @@ body.cursor-flight-active .design-symbol,body.cursor-flight-active .design-symbo
 .project-name { font-weight:500; }
 .project-details { font-weight:400; }
 .page4 .img-box { z-index:100; }
-@media (min-width:1101px) { .page4 .box2 .img-box { bottom:calc(18px + 100% + var(--preview-y) - 36px); } }
 .project-link::before { background:#333; }
 .project-row:is(:hover,:focus-within,.is-active) :is(.project-name,.project-details) { color:var(--project-color); }
 /* The final frame uses the supplied landscape over a fully opaque black base. */

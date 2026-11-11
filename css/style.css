@@ -368,8 +368,11 @@ header.header-on-light .year {
 .page4 .box5 .img-box {
   top: calc(40px + var(--preview-y));
 }
+.page4 .box2 .img-box {
+  top: calc(100% + 18px + var(--preview-y));
+  bottom: auto;
+}
 .page4 .box1 .img-box,
-.page4 .box2 .img-box,
 .page4 .box4 .img-box,
 .page4 .box3 .img-box {
   top: auto;
