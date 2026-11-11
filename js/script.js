@@ -543,7 +543,6 @@ function scheduleScene() {
   if (sceneFrame === null) sceneFrame = requestAnimationFrame(updateScene);
 }
 
-if (!reducedMotion.matches) footer.classList.add("motion-ready");
 window.addEventListener("scroll", scheduleScene, { passive: true });
 window.addEventListener("resize", () => {
   makerOrigin=null;
@@ -676,7 +675,6 @@ function resetPointerEffects() {
   heroSymbols.forEach(resetSymbolPose);
   currentStoryIndex = -1;
   measureStory();
-  footer.classList.toggle("motion-ready", !reducedMotion.matches);
   captureCoverAnimations();
   if (reducedMotion.matches) {
     [...revealItems,...projectCopyItems].forEach(item=>item.classList.add("is-revealed"));
@@ -708,31 +706,12 @@ smoothScroll?.on("scroll", () => {
   scheduleHeaderTheme();
 });
 
-// Footer shortcuts jump to the settled scene rather than replaying every panel.
-const sceneHeadingIds = {top:"portfolio-title", direction:"direction-label", perspective:"perspective-label", about:"about-label", projects:"project-label"};
-Object.values(sceneHeadingIds).forEach(id => {
-  const heading = document.getElementById(id);
-  heading.tabIndex = -1;
-  heading.classList.add("scene-focus-target");
-});
+// The footer's single shortcut returns directly to the cover.
+const topHeading = document.getElementById("portfolio-title");
+topHeading.tabIndex = -1;
+topHeading.classList.add("scene-focus-target");
 let footerNavigationPending = false;
-function footerSceneTarget(scene) {
-  if (scene === "top") return 0;
-  if (reducedMotion.matches) return window.scrollY + document.getElementById(scene).getBoundingClientRect().top;
-  const base = window.scrollY + story.getBoundingClientRect().top;
-  if (scene === "about") return base + storyStops[1].start;
-  if (scene === "projects") return base + storyStops[2].start;
-  if (scene === "perspective") {
-    const stop = storyStops[0];
-    const preLift = Math.min(stop.extra, storyStage.clientHeight * .08);
-    const body = storyPanels[0].querySelector(".panel-body");
-    const naturalTop = perspectiveSection.getBoundingClientRect().top - body.getBoundingClientRect().top;
-    const lift = clamp(naturalTop - 24, preLift, stop.extra);
-    return base + stop.entranceEnd + Math.max(stop.perspectiveRead, lift - preLift);
-  }
-  return base;
-}
-async function jumpFromFooter(scene) {
+async function jumpToTop() {
   if (footerNavigationPending) return;
   footerNavigationPending = true;
   const animate = !reducedMotion.matches;
@@ -744,12 +723,11 @@ async function jumpFromFooter(scene) {
       await pause(160);
     }
     measureStory();
-    const target = footerSceneTarget(scene);
-    if (smoothScroll) smoothScroll.scrollTo(target, {immediate:true, force:true});
-    else window.scrollTo({top:target, behavior:"instant"});
+    if (smoothScroll) smoothScroll.scrollTo(0, {immediate:true, force:true});
+    else window.scrollTo({top:0, behavior:"instant"});
     updateScene();
     updateHeaderTheme();
-    document.getElementById(sceneHeadingIds[scene]).focus({preventScroll:true});
+    topHeading.focus({preventScroll:true});
     if (animate) await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
   } finally {
     document.body.classList.remove("scene-jumping");
@@ -758,10 +736,8 @@ async function jumpFromFooter(scene) {
     footerNavigationPending = false;
   }
 }
-footer.querySelectorAll("[data-scene-jump]").forEach(link => {
-  link.addEventListener("click", event => {
-    event.preventDefault();
-    event.stopPropagation();
-    jumpFromFooter(link.dataset.sceneJump);
-  });
+footer.querySelector('[data-scene-jump="top"]').addEventListener("click", event => {
+  event.preventDefault();
+  event.stopPropagation();
+  jumpToTop();
 });
