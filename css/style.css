@@ -296,7 +296,7 @@ header.header-on-light .year {
   z-index: 20;
   display: inline-flex;
   align-items: baseline;
-  gap: clamp(24px, 2.917vw, 56px);
+  gap: clamp(32px, 4.583vw, 88px);
   justify-self: start;
   background: #fff;
   font-size: 32px;
@@ -308,6 +308,7 @@ header.header-on-light .year {
 .project-type {
   flex: 0 0 3em;
   font: inherit;
+  font-weight: 400;
   letter-spacing: inherit;
   color: inherit;
 }
