@@ -163,7 +163,6 @@ const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 const motionAllowed = () => !reducedMotion.matches && finePointer.matches;
 const story = document.querySelector(".horizontal-story");
 const storyStage = story.querySelector(".story-stage");
-const storyTrack = story.querySelector(".story-track");
 const storyPanels = [...story.querySelectorAll(".story-panel")];
 const perspectiveSection = document.querySelector("#perspective");
 const directionSection = document.querySelector("#direction");
@@ -221,7 +220,6 @@ function updateStory() {
   if (reducedMotion.matches) {
     introProgress={direction:1,mark:1,perspective:1};
     aboutProgress={title:1,profile:1,resume:1};
-    storyTrack.style.removeProperty("--story-x");
     perspectiveSection.style.removeProperty("--perspective-x");
     storyPanels.forEach(panel => { panel.removeAttribute("inert"); panel.style.removeProperty("--panel-y"); panel.style.removeProperty("--panel-x"); panel.classList.remove("is-in-scene"); panel.classList.add("is-current"); });
     return;
@@ -353,7 +351,7 @@ function updateMakerCredit() {
   document.body.classList.toggle("maker-credit-active",active);
   if(!active){
     makerOrigin=null;
-    makerCredit.classList.remove("is-travelling","is-over-contact");
+    makerCredit.classList.remove("is-travelling");
     document.body.classList.remove("maker-to-footer","maker-credit-near-landing","maker-credit-landed");
     return;
   }
@@ -514,8 +512,6 @@ heroSymbols.forEach(symbol => {
   symbol.addEventListener("pointercancel",reset);
 });
 let sceneFrame = null;
-let lastHeroProgress = -1;
-
 
 function updateScene() {
   sceneFrame = null;
@@ -528,15 +524,8 @@ function updateScene() {
   footer.classList.toggle("is-visible", footerBox.top < window.innerHeight && footerBox.bottom > 0);
   const bounds = hero.getBoundingClientRect();
   const progress = reducedMotion.matches ? 0 : clamp((window.scrollY-coverRunway)/Math.max(1,heroStage.offsetHeight-24),0,1);
-  hero.classList.toggle("is-transitioning", progress > 0.01);
   hero.classList.toggle("is-covered", progress >= 1);
   hero.classList.toggle("is-offscreen", bounds.bottom <= 0 || bounds.top >= window.innerHeight);
-  if (progress !== lastHeroProgress) {
-    hero.style.setProperty("--hero-exit", progress.toFixed(4));
-    lastHeroProgress = progress;
-  }
-
-
 }
 
 function scheduleScene() {
@@ -548,7 +537,6 @@ window.addEventListener("resize", () => {
   makerOrigin=null;
   cursorFlight=null;
   if (cursorPointer.x > window.innerWidth || cursorPointer.y > window.innerHeight) cursorPresent=false;
-  lastHeroProgress = -1;
   measureStory();
   const activeRow = projectSection.querySelector(".is-active");
   if (activeRow) positionProjectPreview(activeRow);
@@ -587,9 +575,6 @@ function updateSectionTitles() {
   });
 }
 
-document.querySelectorAll(".editorial-copy").forEach(copy=>{
-  [...copy.querySelectorAll(".reveal-item")].forEach((item,index)=>item.style.setProperty("--copy-delay",`${index*.1}s`));
-});
 // Stagger project copy without transforming rows or their preview layers.
 projectRows.forEach((row,index)=>{
   row.querySelectorAll(".project-name,.project-details").forEach((copy,column)=>{
@@ -680,7 +665,6 @@ function resetPointerEffects() {
     [...revealItems,...projectCopyItems].forEach(item=>item.classList.add("is-revealed"));
 
   }
-  lastHeroProgress = -1;
   scheduleScene();
 }
 reducedMotion.addEventListener("change", resetPointerEffects);
