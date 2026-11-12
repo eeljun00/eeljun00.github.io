@@ -185,35 +185,24 @@ header.hide {
 
 .box1 {
   --project-color: #00ff50;
-
-  --preview-y: 0px;
 }
 .box2 {
   --project-color: #588157;
-
-  --preview-y: 10px;
 }
 .box3 {
   --project-color: #ffc107;
-
-  --preview-y: -8px;
 }
 .box4 {
   --project-color: #e3051b;
-
-  --preview-y: -12px;
 }
 .box5 {
   --project-color: #ff6f6f;
-
-  --preview-y: 6px;
 }
 
 /* 각 항목의 구분선을 기준으로 미리보기를 배치 */
 .page4 .img-box {
   --preview-width: clamp(480px, 42vw, 680px);
   position: absolute;
-  top: calc(82px + var(--preview-y));
   left: var(--preview-left, 50%);
   translate: -50% 0;
   width: min(var(--preview-width), var(--preview-safe-width, 680px));
