@@ -187,7 +187,7 @@ body.cursor-flight-active .design-symbol,body.cursor-flight-active .design-symbo
 .page4 .panel-body { min-height:max(100svh,56.25vw); padding:clamp(90px,7.8125vw,150px) clamp(40px,8.333vw,160px) 0; }
 .page4 .Project { padding-top:clamp(25px,2.604vw,50px); margin-bottom:clamp(60px,5.208vw,100px); line-height:1.5; font-weight:400; }
 .project-link { min-height:84px; padding:clamp(14px,.9375vw,18px) 0 clamp(28px,2.292vw,44px); }
-.project-name,.project-details { font-size:clamp(24px,1.667vw,32px); line-height:1.5; background:var(--paper); color:var(--story-ink); }
+.project-name,.project-details { font-size:clamp(22px,1.4583vw,28px); line-height:1.5; background:var(--paper); color:var(--story-ink); }
 .project-name { font-weight:500; }
 .project-details { font-weight:400; }
 .project-row:is(:hover,:focus-within,.is-active) :is(.project-name,.project-details) { color:var(--project-text-color,var(--project-color)); }
@@ -237,8 +237,8 @@ body.scene-jumping .scene-jump-veil { opacity:1; pointer-events:auto; }
   .resume-grid { padding-top:24px; }
   .direction-heading,.perspective-lead { font-size:clamp(32px,4.3vw,48px); }
   .editorial-body { font-size:clamp(18px,2.15vw,24px); }
-  .project-name { font-size:22px; }
-  .project-details { font-size:18px; }
+  .project-name { font-size:20px; }
+  .project-details { font-size:16px; }
   .page4 .Project { margin-bottom:48px; }
 }
 /* Wide About scenes keep the title, profile and complete resume in one frame. */
