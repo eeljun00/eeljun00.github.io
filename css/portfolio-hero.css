@@ -190,7 +190,7 @@ body.cursor-flight-active .design-symbol,body.cursor-flight-active .design-symbo
 .project-name,.project-details { font-size:clamp(24px,1.667vw,32px); line-height:1.5; background:var(--paper); color:var(--story-ink); }
 .project-name { font-weight:500; }
 .project-details { font-weight:400; }
-.project-row:is(:hover,:focus-within,.is-active) :is(.project-name,.project-details) { color:var(--project-color); }
+.project-row:is(:hover,:focus-within,.is-active) :is(.project-name,.project-details) { color:var(--project-text-color,var(--project-color)); }
 /* The final frame uses the supplied landscape over a fully opaque black base. */
 .page5 { display:block; height:850px; min-height:850px; padding:0; background:#000; color:var(--paper); }
 .page5 > .page5-img-wrapper { inset:0; width:100%; height:100%; }

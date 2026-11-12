@@ -154,7 +154,7 @@ header.hide {
 .project-row:hover,
 .project-row:focus-within,
 .project-row.is-active {
-  color: var(--project-color);
+  color: var(--project-text-color, var(--project-color));
 }
 
 .project-row:hover .project-link::after,
@@ -184,13 +184,15 @@ header.hide {
 }
 
 .box1 {
-  --project-color: #00ff50;
+  --project-color: #39964b;
+  --project-text-color: #237d35;
 }
 .box2 {
   --project-color: #588157;
 }
 .box3 {
-  --project-color: #ffc107;
+  --project-color: #c49a27;
+  --project-text-color: #8e6908;
 }
 .box4 {
   --project-color: #e3051b;
